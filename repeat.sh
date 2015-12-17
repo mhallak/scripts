@@ -16,6 +16,12 @@ RESULT=""
 for dir in ${DIR_LIST}
 do
    mkdir ../$dir
+   err_code=$?
+   if [ $err_code -ne 0 ]
+        then
+          echo "Directory already exists"
+          exit 1
+   fi
    cp -r $dir/scenarioSystemModels ../$dir/scenarioSystemModels
    cp    $dir/scen.SFV  ../$dir/scen.SFV
    cp    $dir/scenario* ../$dir
@@ -25,10 +31,14 @@ cd ../
 
 for dir in ${DIR_LIST}
 do
-   roslaunch SRVSS runScenario_robil2.launch scen:=work_space/$dir
-   pid=$!
+   roslaunch SRVSS --pid=/tmp/srvsspid runScenario_robil2.launch scen:=work_space/$dir &
+  # tpid=$!
+  # echo $tpid > /tmp/pid
+  # echo $$ > /tmp/ppid
    sleep 600
-   kill -9 $pid
+  #  kill -9 $tpid
+   kill -INT `cat /tmp/srvsspid`
+   sleep 60
 done
 exit 0
 
