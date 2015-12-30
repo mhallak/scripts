@@ -1,0 +1,62 @@
+#Allow core dump
+ulimit -c unlimited
+export PATH="/usr/local/bin:/home/michele/scripts:/home/michele/apache-maven-3.2.2/bin:$PATH"
+
+export EDITOR='vi'
+
+export JAVA_HOME=$(readlink -f /usr/bin/javac | sed "s:bin/javac::")
+export ROBIL2=/home/michele/robil2
+export GIT_MERGE_AUTOEDIT=no
+alias a=alias
+alias h=history
+alias j=jobs
+alias d=date
+alias rm='rm -i'
+alias ver='lsb_release -a'
+alias cdw='cd $ROBIL2'
+alias cds='cd $ROBIL2/src'
+alias cdg='cd $ROBIL2/src/Framework/ocu/scripts'
+alias cdsw='cd $HOME/smart_rdk/src/smart_rdk/work_space'
+alias sgit='/home/michele/smartgit/bin/smartgit.sh'
+source ~/.git-completion.bash
+#source /opt/ros/indigo/setup.bash
+#source /usr/local/share/gazebo-1.9/setup.sh
+#source /home/michele/testing/hydro/catkin_ws/devel/setup.bash
+#source /home/michele/robil2/devel/setup.bash
+source $ROBIL2/devel/setup.bash
+alias uf='source $ROBIL2/devel/setup.bash'
+
+alias fsm='rosservice call /fsm_tracker/states "fsm: ''"'
+alias pin='rostopic pub /mode std_msgs/String "data: 'unpinned'"'
+alias bc='roslaunch bobcat_gazebo bobcat_world.launch'
+#alias clouds='/userhome/mhallak/cloudsim-1.0.3/bin/create_cloudsim.py hugo.guterman@gmail.com AKIAJ3XTILJCANC62EHQ +F13iHybGB0IrWVog6N3dznPlhM33mUubo9XqDP6'
+
+alias win='rdesktop darpawin1 -u darpawin1 -p 1qaz2wsx -g workarea'
+
+
+#1404 export GAZEBO_RESOURCE_PATH="$HOME/robil_res:/usr/local/share/gazebo-1.9:$GAZEBO_RESOURCE_PATH"
+#export GAZEBO_RESOURCE_PATH="/usr/local/share/gazebo-1.9:$GAZEBO_RESOURCE_PATH"
+#hydroexport LD_LIBRARY_PATH="/usr/local/lib:/opt/ros/fuerte/stacks/visualization_common/ogre/ogre/lib:$LD_LIBRARY_PATH"
+export LD_LIBRARY_PATH="/usr/local/lib:$LD_LIBRARY_PATH"
+export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH"
+alias jenk='java -jar ./.icedtea/cache/0/http/mirrors.jenkins-ci.org/war/latest/jenkins.war'
+#alias ver='rospack find atlas; rospack finrosservice call /executer/whoIsRunning "{}"d atlas_utils'
+
+alias clvpn='sudo ./start_vpn.bash'
+
+#export ROBIL=/home/michele/git/robil
+
+alias db='~/.dropbox-dist/dropboxd'
+alias rmcore='find . -name core | xargs rm'
+alias dlogs='rm -rf ~/.ros/log/*'
+alias whox='rosservice call /executer/whoIsRunning "{}"'
+alias stapc='rosservice call /PoseController/start "{}" '
+alias stopc='rosservice call /PoseController/stop "{}" '
+alias bdim='rostopic echo /atlas/atlas_sim_interface_state/current_behavior'
+#export VRC_CHEATS_ENABLED=1
+#Atlas STASH
+export STASH_HOME="/home/michele/atlas/atlassian-stash-2.7.1"
+
+export ROS_IP=`hostname -I`
+
+# PROMPT_COMMAND='echo -ne "\033]0;$(basename ${PWD})\007"' 
