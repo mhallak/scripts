@@ -1,0 +1,33 @@
+#! /bin/sh
+#
+# SYNOPSIS  ./smarterHeaderToICD.sh <directory>
+# This script needs the relevant directory as an input parameter.
+exec 1>&2
+if [ -z "$1" ]
+  then
+    echo "No argument supplied"
+	exit 1
+fi
+ourdir="$1"
+
+if [ -z "$2" ]
+   then
+	 echo "No path for IcdHeader file supplied. Taking default one"
+	 headerFile='../txbscripts/IcdHeader'
+else
+     headerFile="$2"
+fi
+echo $headerFile
+if [ ! -f $headerFile ]
+   then
+	echo "$headerFile doesn't exist"
+	exit 1
+fi
+
+echo "Inserting header to $ourdir"
+cd $ourdir
+
+find . -name "*.c" -or -name "*.h" | xargs sed -i "10 r $headerFile"
+# find . -name "*.c" -or -name "*.h" | xargs sed -i '10 r ../txbscripts/IcdHeader'
+
+exit 0
