@@ -12,33 +12,41 @@ cd $MODEL_DIR
 DIR_LIST="`ls -d sampl_*/`"
 echo DIR_LIST: ${DIR_LIST}
 
-RESULT=""
 for dir in ${DIR_LIST}
 do
+  echo "Copying with $dir"
    mkdir ../$dir
    err_code=$?
    if [ $err_code -ne 0 ]
-        then
-          echo "Directory already exists"
+	then
+	  echo "Directory already exists"
           exit 1
    fi
-   cp -r $dir/scenarioSystemModels ../$dir/scenarioSystemModels
+   #cp -ar $dir/scenarioSystemModels ../$dir/scenarioSystemModels
    cp    $dir/scen.SFV  ../$dir/scen.SFV
-   cp    $dir/scenario* ../$dir
+   cp  -a -r  $dir/scenario* ../$dir
+#   cp -a -r $dir/scenarioSystemModels ../$dir
 done
 
 cd ../
+rm -f superGrades.txt
+
+echo "Starting executing scenarios"
 
 for dir in ${DIR_LIST}
 do
-   roslaunch SRVSS --pid=/tmp/srvsspid runScenario_robil2.launch scen:=work_space/$dir &
-  # tpid=$!
-  # echo $tpid > /tmp/pid
-  # echo $$ > /tmp/ppid
-   sleep 600
+  echo "Execute scenario $dir"
+   roslaunch SRVSS --pid=/tmp/srvsspid runScenario_robil2.launch scen:=$dir &
+  sleep 300
+  rostopic echo /srvss/grades > $dir/grades.txt &
+  tpid=$!
+  sleep 15
+  cat $dir/grades.txt >> superGrades.txt
   #  kill -9 $tpid
    kill -INT `cat /tmp/srvsspid`
    sleep 60
+   kill -INT $tpid
+   
+ 
 done
 exit 0
-
