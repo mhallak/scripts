@@ -1,0 +1,22 @@
+#! /bin/sh
+#
+# Redirect output to stderr.
+
+# Lovely command
+echo "Adjust all files ..."
+find ACS BSW Simulink/Code TXB_WB_APP  -name "*.c" -print -or -name "*.h"  -print -exec sed -i 's|\(Header:\).*\(\$\)|\1 \2|' '{}' \;
+find ACS BSW Simulink/Code TXB_WB_APP  -name "*.c" -print -exec sed -i 's|\(Header:\).*\(\$\)|\1 \2|' '{}' \;
+# echo "Adjust all files of ACS..."
+# find ACS -name "*.c" -or -name "*.h"  | xargs sed -i 's|\(Header:\).*\(\$\)|\1 \2|'
+# echo "...Done"
+# echo "Adjust all files in BSW..."
+# find BSW -name "*.c" -or -name "*.h"  | xargs sed -i 's|\(Header:\).*\(\$\)|\1 \2|'
+# echo "...Done"
+# echo "Adjust all files in Simulink/Code..."
+# find Simulink/Code -name "*.c" -or -name "*.h"  | xargs sed -i 's|\(Header:\).*\(\$\)|\1 \2|'
+# echo "...Done"
+# echo "Adjust all files in TXB_WB_APP..."
+# find TXB_WB_APP    -name "*.c" -or -name "*.h"  | xargs sed -i 's|\(Header:\).*\(\$\)|\1 \2|'
+echo "...Done"
+
+exit 0  

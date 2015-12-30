@@ -1,0 +1,26 @@
+#! /bin/sh
+#
+# SYNOPSIS  ./addHeaderToICD.sh <directory>
+# This script needs the relevant directory as an input parameter.
+
+if [ -z "$1" ]
+  then
+    echo "No argument supplied"
+	exit 1
+fi
+
+ourdir="$1"
+
+echo "Inserting header to $ourdir"
+cd $ourdir
+
+find . -name "*.c" -or -name "*.h" | xargs sed -i '10 s/^/\/* File Revision            			Date      		By              */'
+
+find . -name "*.c" -or -name "*.h" | xargs sed -i '11 s/^/\$Header$/'
+
+find . -name "*.c" -or -name "*.h" | xargs sed -i '12 s/^/ ***********************************************************************\//'
+
+echo "Done..."
+
+exit 0
+#sed -i '10 s/^/\$Header$/' IcdFile.c

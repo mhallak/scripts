@@ -1,0 +1,9 @@
+@echo on
+set /A error=0
+findstr /L rcs-keywords %HOMEPATH%\.gitconfig
+echo %ERRORLEVEL%
+if %ERRORLEVEL% LEQ 0 exit /B 0
+echo "rcs-keywords not found, adding filter to .gitconfig"
+type %TXBSCRIPTS%\gitconfigForAll >> %HOMEPATH%\.gitconfig
+echo "Done"
+exit /B 0

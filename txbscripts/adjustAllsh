@@ -1,0 +1,26 @@
+#! /bin/sh
+#
+# SYNOPSIS  ./adjustAlls.sh <directory>
+# This script needs the relevant directory as an input parameter.
+
+if [ -z "$1" ]
+  then
+    echo "No argument supplied"
+	exit 1
+fi
+
+ourdir="$1"
+
+echo "adjust all files of $ourdir"
+cd $ourdir
+find ACS BSW Simulink/Code TXB_WB_APP -name "*.c" -or -name "*.h" -print  -exec git checkout -f HEAD {} \;
+# find ACS -name "*.c" -or -name "*.h"  | xargs git checkout -f HEAD
+# find BSW -name "*.c" -or -name "*.h"  | xargs git checkout -f HEAD
+# find Simulink/Code -name "*.c" -or -name "*.h"  | xargs git checkout -f HEAD
+# find TXB_WB_APP    -name "*.c" -or -name "*.h"  | xargs git checkout -f HEAD
+
+
+# "C:\Program Files\GIT\bin\git.exe" checkout -f HEAD *.c *.h 
+
+# dir /S /B *.c *.h *.H | git checkout -f HEAD
+

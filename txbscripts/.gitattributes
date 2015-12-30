@@ -1,0 +1,21 @@
+# .gitattributes
+# Map file extensions to git filters
+
+#*.h filter=rcs-keywords
+#*.c filter=rcs-keywords
+# Specific Directories
+ACS/*/*.h   filter=rcs-keywords
+ACS/*/*/*.h filter=rcs-keywords
+ACS/*/*.c   filter=rcs-keywords
+ACS/*/*/*.c filter=rcs-keywords
+BSW/*/*.h   filter=rcs-keywords
+BSW/*/*/*.h filter=rcs-keywords
+BSW/*/*.c   filter=rcs-keywords
+BSW/*/*/*.c filter=rcs-keywords
+Simulink/Code/A*/*/*.c  filter=rcs-keywords
+Simulink/Code/A*/*/*.h  filter=rcs-keywords
+TXB_WB_APP/appCommon/appDispatcher/*.h  filter=rcs-keywords
+TXB_WB_APP/appCommon/appDispatcher/*.c  filter=rcs-keywords
+#* filter=rcs-keywords
+
+

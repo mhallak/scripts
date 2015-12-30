@@ -1,0 +1,5 @@
+echo on
+set title=%~n0
+TITLE %title%
+"C:\Program Files\GIT\bin\sh.exe" --login -i smarterHeaderToICD.sh %1%
+exit /B 0

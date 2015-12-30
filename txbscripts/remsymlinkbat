@@ -1,0 +1,1072 @@
+rem  remsymlink.bat is a batch file that recreates all the symbolic links.
+rem  
+
+rem @author      @$Author$
+rem @date	@$Date$
+rem @version	@$Revision$
+rem
+rem $Id$
+rem
+rem
+echo on
+set title=%~n0
+TITLE %title%
+
+set cur_loc=%cd%
+set rep=%1%
+
+if NOT "%rep%"=="" (
+    cd %rep%
+) 
+set TXB_HOME=%cd%
+
+
+echo %TXB_HOME%
+cd %TXB_HOME%
+
+
+del /Q /F acs\acsDb2Sp\db2sp_context.a2l        
+del /Q /F acs\acsDb2Sp\db2sp_context.c          
+del /Q /F acs\acsDb2Sp\db2sp_context.h          
+del /Q /F acs\acsDb2Sp\db2sp_context_private.h  
+del /Q /F acs\acsDb2Sp\db2sp_context_types.h    
+del /Q /F acs\acsDb2Sp\db2sp_ref.c              
+del /Q /F acs\acsDb2Sp\db2sp_ref.h              
+del /Q /F acs\acsDb2Sp\db2sp_ref_private.h      
+del /Q /F acs\acsDb2Sp\db2sp_ref_types.h        
+del /Q /F acs\acsDb2Sp\sp_cal_defs.c            
+del /Q /F acs\acsDb2Sp\sp_var_defs.c            
+
+del /Q /F acs\acsM2S\acsAcM2S\ac_cal_defs.c     
+del /Q /F acs\acsM2S\acsAcM2S\ac_var_defs.c     
+del /Q /F acs\acsM2S\acsAcM2S\acM2S.a2l         
+del /Q /F acs\acsM2S\acsAcM2S\acM2S.c           
+del /Q /F acs\acsM2S\acsAcM2S\acM2S.h           
+del /Q /F acs\acsM2S\acsAcM2S\acM2S_private.h   
+del /Q /F acs\acsM2S\acsAcM2S\acM2S_ref.c       
+del /Q /F acs\acsM2S\acsAcM2S\acM2S_ref.h       
+del /Q /F acs\acsM2S\acsAcM2S\acM2S_ref_private.h  
+del /Q /F acs\acsM2S\acsAcM2S\acM2S_ref_types.h    
+del /Q /F acs\acsM2S\acsAcM2S\acM2S_types.h        
+
+del /Q /F acs\acsM2S\acsAhrsM2S\ahrs_cal_defs.c     
+del /Q /F acs\acsM2S\acsAhrsM2S\ahrs_var_defs.c     
+del /Q /F acs\acsM2S\acsAhrsM2S\ahrsM2S.a2l         
+del /Q /F acs\acsM2S\acsAhrsM2S\ahrsM2S.c           
+del /Q /F acs\acsM2S\acsAhrsM2S\ahrsM2S.h           
+del /Q /F acs\acsM2S\acsAhrsM2S\ahrsM2S_private.h   
+del /Q /F acs\acsM2S\acsAhrsM2S\ahrsM2S_ref.c       
+del /Q /F acs\acsM2S\acsAhrsM2S\ahrsM2S_ref.h       
+del /Q /F acs\acsM2S\acsAhrsM2S\ahrsM2S_ref_private.h  
+del /Q /F acs\acsM2S\acsAhrsM2S\ahrsM2S_ref_types.h    
+del /Q /F acs\acsM2S\acsAhrsM2S\ahrsM2S_types.h        
+
+del /Q /F acs\acsM2S\acsAlnM2S\aln_cal_defs.c     
+del /Q /F acs\acsM2S\acsAlnM2S\aln_var_defs.c     
+del /Q /F acs\acsM2S\acsAlnM2S\alnM2S.a2l         
+del /Q /F acs\acsM2S\acsAlnM2S\alnM2S.c           
+del /Q /F acs\acsM2S\acsAlnM2S\alnM2S.h           
+del /Q /F acs\acsM2S\acsAlnM2S\alnM2S_private.h   
+del /Q /F acs\acsM2S\acsAlnM2S\alnM2S_ref.c       
+del /Q /F acs\acsM2S\acsAlnM2S\alnM2S_ref.h       
+del /Q /F acs\acsM2S\acsAlnM2S\alnM2S_ref_private.h  
+del /Q /F acs\acsM2S\acsAlnM2S\alnM2S_ref_types.h    
+del /Q /F acs\acsM2S\acsAlnM2S\alnM2S_types.h        
+
+del /Q /F acs\acsM2S\acsAtcM2S\atc_cal_defs.c     
+del /Q /F acs\acsM2S\acsAtcM2S\atc_var_defs.c     
+del /Q /F acs\acsM2S\acsAtcM2S\atcM2S.a2l         
+del /Q /F acs\acsM2S\acsAtcM2S\atcM2S.c           
+del /Q /F acs\acsM2S\acsAtcM2S\atcM2S.h           
+del /Q /F acs\acsM2S\acsAtcM2S\atcM2S_private.h   
+del /Q /F acs\acsM2S\acsAtcM2S\atcM2S_ref.c       
+del /Q /F acs\acsM2S\acsAtcM2S\atcM2S_ref.h       
+del /Q /F acs\acsM2S\acsAtcM2S\atcM2S_ref_private.h  
+del /Q /F acs\acsM2S\acsAtcM2S\atcM2S_ref_types.h    
+del /Q /F acs\acsM2S\acsAtcM2S\atcM2S_types.h        
+
+del /Q /F acs\acsM2S\acsBswM2S\bsw_cal_defs.c     
+del /Q /F acs\acsM2S\acsBswM2S\bsw_var_defs.c     
+del /Q /F acs\acsM2S\acsBswM2S\bswM2S.a2l         
+del /Q /F acs\acsM2S\acsBswM2S\bswM2S.c           
+del /Q /F acs\acsM2S\acsBswM2S\bswM2S.h           
+del /Q /F acs\acsM2S\acsBswM2S\bswM2S_private.h   
+del /Q /F acs\acsM2S\acsBswM2S\bswM2S_ref.c       
+del /Q /F acs\acsM2S\acsBswM2S\bswM2S_ref.h       
+del /Q /F acs\acsM2S\acsBswM2S\bswM2S_ref_private.h  
+del /Q /F acs\acsM2S\acsBswM2S\bswM2S_ref_types.h    
+del /Q /F acs\acsM2S\acsBswM2S\bswM2S_types.h        
+
+del /Q /F acs\acsM2S\acsCsM2S\cs_cal_defs.c     
+del /Q /F acs\acsM2S\acsCsM2S\cs_var_defs.c     
+del /Q /F acs\acsM2S\acsCsM2S\csM2S.a2l         
+del /Q /F acs\acsM2S\acsCsM2S\csM2S.c           
+del /Q /F acs\acsM2S\acsCsM2S\csM2S.h           
+del /Q /F acs\acsM2S\acsCsM2S\csM2S_private.h   
+del /Q /F acs\acsM2S\acsCsM2S\csM2S_ref.c       
+del /Q /F acs\acsM2S\acsCsM2S\csM2S_ref.h       
+del /Q /F acs\acsM2S\acsCsM2S\csM2S_ref_private.h  
+del /Q /F acs\acsM2S\acsCsM2S\csM2S_ref_types.h    
+del /Q /F acs\acsM2S\acsCsM2S\csM2S_types.h        
+
+del /Q /F acs\acsM2S\acsDcM2S\dc_cal_defs.c     
+del /Q /F acs\acsM2S\acsDcM2S\dc_var_defs.c     
+del /Q /F acs\acsM2S\acsDcM2S\dcM2S.a2l         
+del /Q /F acs\acsM2S\acsDcM2S\dcM2S.c           
+del /Q /F acs\acsM2S\acsDcM2S\dcM2S.h           
+del /Q /F acs\acsM2S\acsDcM2S\dcM2S_private.h   
+del /Q /F acs\acsM2S\acsDcM2S\dcM2S_ref.c       
+del /Q /F acs\acsM2S\acsDcM2S\dcM2S_ref.h       
+del /Q /F acs\acsM2S\acsDcM2S\dcM2S_ref_private.h  
+del /Q /F acs\acsM2S\acsDcM2S\dcM2S_ref_types.h    
+del /Q /F acs\acsM2S\acsDcM2S\dcM2S_types.h        
+
+del /Q /F acs\acsM2S\acsDfM2S\df_cal_defs.c     
+del /Q /F acs\acsM2S\acsDfM2S\df_var_defs.c     
+del /Q /F acs\acsM2S\acsDfM2S\dfM2S.a2l         
+del /Q /F acs\acsM2S\acsDfM2S\dfM2S.c           
+del /Q /F acs\acsM2S\acsDfM2S\dfM2S.h           
+del /Q /F acs\acsM2S\acsDfM2S\dfM2S_private.h   
+del /Q /F acs\acsM2S\acsDfM2S\dfM2S_ref.c       
+del /Q /F acs\acsM2S\acsDfM2S\dfM2S_ref.h       
+del /Q /F acs\acsM2S\acsDfM2S\dfM2S_ref_private.h  
+del /Q /F acs\acsM2S\acsDfM2S\dfM2S_ref_types.h    
+del /Q /F acs\acsM2S\acsDfM2S\dfM2S_types.h        
+
+del /Q /F acs\acsM2S\acsDgpsM2S\dgps1_cal_defs.c     
+del /Q /F acs\acsM2S\acsDgpsM2S\dgps1_var_defs.c     
+del /Q /F acs\acsM2S\acsDgpsM2S\dgps2_cal_defs.c     
+del /Q /F acs\acsM2S\acsDgpsM2S\dgps2_var_defs.c     
+del /Q /F acs\acsM2S\acsDgpsM2S\dgpsM2S.a2l         
+del /Q /F acs\acsM2S\acsDgpsM2S\dgpsM2S.c           
+del /Q /F acs\acsM2S\acsDgpsM2S\dgpsM2S.h           
+del /Q /F acs\acsM2S\acsDgpsM2S\dgpsM2S_private.h   
+del /Q /F acs\acsM2S\acsDgpsM2S\dgpsM2S_ref.c       
+del /Q /F acs\acsM2S\acsDgpsM2S\dgpsM2S_ref.h       
+del /Q /F acs\acsM2S\acsDgpsM2S\dgpsM2S_ref_private.h  
+del /Q /F acs\acsM2S\acsDgpsM2S\dgpsM2S_ref_types.h    
+del /Q /F acs\acsM2S\acsDgpsM2S\dgpsM2S_types.h        
+
+del /Q /F acs\acsM2S\acsDpM2S\dp_cal_defs.c     
+del /Q /F acs\acsM2S\acsDpM2S\dp_var_defs.c     
+del /Q /F acs\acsM2S\acsDpM2S\dpM2S.a2l         
+del /Q /F acs\acsM2S\acsDpM2S\dpM2S.c           
+del /Q /F acs\acsM2S\acsDpM2S\dpM2S.h           
+del /Q /F acs\acsM2S\acsDpM2S\dpM2S_private.h   
+del /Q /F acs\acsM2S\acsDpM2S\dpM2S_ref.c       
+del /Q /F acs\acsM2S\acsDpM2S\dpM2S_ref.h       
+del /Q /F acs\acsM2S\acsDpM2S\dpM2S_ref_private.h  
+del /Q /F acs\acsM2S\acsDpM2S\dpM2S_ref_types.h    
+del /Q /F acs\acsM2S\acsDpM2S\dpM2S_types.h        
+
+del /Q /F acs\acsM2S\acsDpvM2S\dpv_cal_defs.c     
+del /Q /F acs\acsM2S\acsDpvM2S\dpv_var_defs.c     
+del /Q /F acs\acsM2S\acsDpvM2S\dpvM2S.a2l         
+del /Q /F acs\acsM2S\acsDpvM2S\dpvM2S.c           
+del /Q /F acs\acsM2S\acsDpvM2S\dpvM2S.h           
+del /Q /F acs\acsM2S\acsDpvM2S\dpvM2S_private.h   
+del /Q /F acs\acsM2S\acsDpvM2S\dpvM2S_ref.c       
+del /Q /F acs\acsM2S\acsDpvM2S\dpvM2S_ref.h       
+del /Q /F acs\acsM2S\acsDpvM2S\dpvM2S_ref_private.h  
+del /Q /F acs\acsM2S\acsDpvM2S\dpvM2S_ref_types.h    
+del /Q /F acs\acsM2S\acsDpvM2S\dpvM2S_types.h        
+
+del /Q /F acs\acsM2S\acsIntcM2S\intc_cal_defs.c     
+del /Q /F acs\acsM2S\acsIntcM2S\intc_var_defs.c     
+del /Q /F acs\acsM2S\acsIntcM2S\intcM2S.a2l         
+del /Q /F acs\acsM2S\acsIntcM2S\intcM2S.c           
+del /Q /F acs\acsM2S\acsIntcM2S\intcM2S.h           
+del /Q /F acs\acsM2S\acsIntcM2S\intcM2S_private.h   
+del /Q /F acs\acsM2S\acsIntcM2S\intcM2S_ref.c       
+del /Q /F acs\acsM2S\acsIntcM2S\intcM2S_ref.h       
+del /Q /F acs\acsM2S\acsIntcM2S\intcM2S_ref_private.h  
+del /Q /F acs\acsM2S\acsIntcM2S\intcM2S_ref_types.h    
+del /Q /F acs\acsM2S\acsIntcM2S\intcM2S_types.h        
+
+del /Q /F acs\acsM2S\acsIsM2S\is_cal_defs.c     
+del /Q /F acs\acsM2S\acsIsM2S\is_var_defs.c     
+del /Q /F acs\acsM2S\acsIsM2S\isM2S.a2l         
+del /Q /F acs\acsM2S\acsIsM2S\isM2S.c           
+del /Q /F acs\acsM2S\acsIsM2S\isM2S.h           
+del /Q /F acs\acsM2S\acsIsM2S\isM2S_private.h   
+del /Q /F acs\acsM2S\acsIsM2S\isM2S_ref.c       
+del /Q /F acs\acsM2S\acsIsM2S\isM2S_ref.h       
+del /Q /F acs\acsM2S\acsIsM2S\isM2S_ref_private.h  
+del /Q /F acs\acsM2S\acsIsM2S\isM2S_ref_types.h    
+del /Q /F acs\acsM2S\acsIsM2S\isM2S_types.h        
+
+del /Q /F acs\acsM2S\acsLtM2S\lt_cal_defs.c     
+del /Q /F acs\acsM2S\acsLtM2S\lt_var_defs.c     
+del /Q /F acs\acsM2S\acsLtM2S\ltM2S.c           
+del /Q /F acs\acsM2S\acsLtM2S\ltM2S.h           
+del /Q /F acs\acsM2S\acsLtM2S\ltM2S_private.h   
+del /Q /F acs\acsM2S\acsLtM2S\ltM2S_ref.c       
+del /Q /F acs\acsM2S\acsLtM2S\ltM2S_ref.h       
+del /Q /F acs\acsM2S\acsLtM2S\ltM2S_ref_private.h  
+del /Q /F acs\acsM2S\acsLtM2S\ltM2S_ref_types.h    
+del /Q /F acs\acsM2S\acsLtM2S\ltM2S_types.h        
+del /Q /F acs\acsM2S\acsLtM2S\vl_cal_defs.c        
+
+del /Q /F acs\acsM2S\acsLvcM2S\lvc_cal_defs.c     
+del /Q /F acs\acsM2S\acsLvcM2S\lvc_var_defs.c    
+del /Q /F acs\acsM2S\acsLvcM2S\lvcM2S.a2l         
+del /Q /F acs\acsM2S\acsLvcM2S\lvcM2S.c           
+del /Q /F acs\acsM2S\acsLvcM2S\lvcM2S.h           
+del /Q /F acs\acsM2S\acsLvcM2S\lvcM2S_private.h   
+del /Q /F acs\acsM2S\acsLvcM2S\lvcM2S_ref.c       
+del /Q /F acs\acsM2S\acsLvcM2S\lvcM2S_ref.h       
+del /Q /F acs\acsM2S\acsLvcM2S\lvcM2S_ref_private.h  
+del /Q /F acs\acsM2S\acsLvcM2S\lvcM2S_ref_types.h    
+del /Q /F acs\acsM2S\acsLvcM2S\lvcM2S_types.h        
+
+del /Q /F acs\acsM2S\acsMdM2S\md_cal_defs.c     
+del /Q /F acs\acsM2S\acsMdM2S\md_var_defs.c    
+del /Q /F acs\acsM2S\acsMdM2S\mdM2S.a2l         
+del /Q /F acs\acsM2S\acsMdM2S\mdM2S.c           
+del /Q /F acs\acsM2S\acsMdM2S\mdM2S.h           
+del /Q /F acs\acsM2S\acsMdM2S\mdM2S_private.h   
+del /Q /F acs\acsM2S\acsMdM2S\mdM2S_ref.c       
+del /Q /F acs\acsM2S\acsMdM2S\mdM2S_ref.h       
+del /Q /F acs\acsM2S\acsMdM2S\mdM2S_ref_private.h   
+del /Q /F acs\acsM2S\acsMdM2S\mdM2S_ref_trace.html  
+del /Q /F acs\acsM2S\acsMdM2S\mdM2S_ref_types.h     
+del /Q /F acs\acsM2S\acsMdM2S\mdM2S_trace.html      
+del /Q /F acs\acsM2S\acsMdM2S\mdM2S_types.h         
+
+del /Q /F acs\acsM2S\acsPduM2S\pdu_cal_defs.c     
+del /Q /F acs\acsM2S\acsPduM2S\pdu_var_defs.c     
+del /Q /F acs\acsM2S\acsPduM2S\pduM2S.a2l         
+del /Q /F acs\acsM2S\acsPduM2S\pduM2S.c           
+del /Q /F acs\acsM2S\acsPduM2S\pduM2S.h           
+del /Q /F acs\acsM2S\acsPduM2S\pduM2S_private.h   
+del /Q /F acs\acsM2S\acsPduM2S\pduM2S_ref.c       
+del /Q /F acs\acsM2S\acsPduM2S\pduM2S_ref.h       
+del /Q /F acs\acsM2S\acsPduM2S\pduM2S_ref_private.h  
+del /Q /F acs\acsM2S\acsPduM2S\pduM2S_ref_types.h    
+del /Q /F acs\acsM2S\acsPduM2S\pduM2S_types.h       
+
+del /Q /F acs\acsM2S\acsSwM2S\sw_cal_defs.c     
+del /Q /F acs\acsM2S\acsSwM2S\sw_var_defs.c     
+del /Q /F acs\acsM2S\acsSwM2S\swM2S.a2l         
+del /Q /F acs\acsM2S\acsSwM2S\swM2S.c          
+del /Q /F acs\acsM2S\acsSwM2S\swM2S.h           
+del /Q /F acs\acsM2S\acsSwM2S\swM2S_private.h   
+del /Q /F acs\acsM2S\acsSwM2S\swM2S_ref.c       
+del /Q /F acs\acsM2S\acsSwM2S\swM2S_ref.h       
+del /Q /F acs\acsM2S\acsSwM2S\swM2S_ref_private.h  
+del /Q /F acs\acsM2S\acsSwM2S\swM2S_ref_types.h    
+del /Q /F acs\acsM2S\acsSwM2S\swM2S_types.h        
+
+del /Q /F acs\acsM2S\acsTasM2S\tas_cal_defs.c     
+del /Q /F acs\acsM2S\acsTasM2S\tas_var_defs.c     
+del /Q /F acs\acsM2S\acsTasM2S\tasM2S.a2l         
+del /Q /F acs\acsM2S\acsTasM2S\tasM2S.c           
+del /Q /F acs\acsM2S\acsTasM2S\tasM2S.h           
+del /Q /F acs\acsM2S\acsTasM2S\tasM2S_private.h   
+del /Q /F acs\acsM2S\acsTasM2S\tasM2S_ref.c       
+del /Q /F acs\acsM2S\acsTasM2S\tasM2S_ref.h       
+del /Q /F acs\acsM2S\acsTasM2S\tasM2S_ref_private.h  
+del /Q /F acs\acsM2S\acsTasM2S\tasM2S_ref_types.h    
+del /Q /F acs\acsM2S\acsTasM2S\tasM2S_types.h        
+
+del /Q /F acs\acsM2S\acsVlM2S\vl_cal_defs.c     
+del /Q /F acs\acsM2S\acsVlM2S\vl_var_defs.c     
+del /Q /F acs\acsM2S\acsVlM2S\vlM2S.a2l         
+del /Q /F acs\acsM2S\acsVlM2S\vlM2S.c           
+del /Q /F acs\acsM2S\acsVlM2S\vlM2S.h           
+del /Q /F acs\acsM2S\acsVlM2S\vlM2S_private.h   
+del /Q /F acs\acsM2S\acsVlM2S\vlM2S_ref.c       
+del /Q /F acs\acsM2S\acsVlM2S\vlM2S_ref.h       
+del /Q /F acs\acsM2S\acsVlM2S\vlM2S_ref_private.h  
+del /Q /F acs\acsM2S\acsVlM2S\vlM2S_ref_types.h    
+del /Q /F acs\acsM2S\acsVlM2S\vlM2S_types.h        
+
+del /Q /F acs\acsM2S\acsWmlM2S\wml_cal_defs.c     
+del /Q /F acs\acsM2S\acsWmlM2S\wml_var_defs.c     
+del /Q /F acs\acsM2S\acsWmlM2S\wmlM2S.a2l         
+del /Q /F acs\acsM2S\acsWmlM2S\wmlM2S.c           
+del /Q /F acs\acsM2S\acsWmlM2S\wmlM2S.h           
+del /Q /F acs\acsM2S\acsWmlM2S\wmlM2S_private.h   
+del /Q /F acs\acsM2S\acsWmlM2S\wmlM2S_ref.c       
+del /Q /F acs\acsM2S\acsWmlM2S\wmlM2S_ref.h       
+del /Q /F acs\acsM2S\acsWmlM2S\wmlM2S_ref_private.h  
+del /Q /F acs\acsM2S\acsWmlM2S\wmlM2S_ref_types.h    
+del /Q /F acs\acsM2S\acsWmlM2S\wmlM2S_types.h        
+
+del /Q /F acs\acsM2S\acsYrsM2S\yrs_cal_defs.c     
+del /Q /F acs\acsM2S\acsYrsM2S\yrs_var_defs.c     
+del /Q /F acs\acsM2S\acsYrsM2S\yrs1_cal_defs.c     
+del /Q /F acs\acsM2S\acsYrsM2S\yrs1_var_defs.c     
+del /Q /F acs\acsM2S\acsYrsM2S\yrs2_cal_defs.c     
+del /Q /F acs\acsM2S\acsYrsM2S\yrs2_var_defs.c     
+del /Q /F acs\acsM2S\acsYrsM2S\yrsM2S.a2l         
+del /Q /F acs\acsM2S\acsYrsM2S\yrsM2S.c           
+del /Q /F acs\acsM2S\acsYrsM2S\yrsM2S.h           
+del /Q /F acs\acsM2S\acsYrsM2S\yrsM2S_private.h   
+del /Q /F acs\acsM2S\acsYrsM2S\yrsM2S_ref.c       
+del /Q /F acs\acsM2S\acsYrsM2S\yrsM2S_ref.h       
+del /Q /F acs\acsM2S\acsYrsM2S\yrsM2S_ref_private.h  
+del /Q /F acs\acsM2S\acsYrsM2S\yrsM2S_ref_types.h    
+del /Q /F acs\acsM2S\acsYrsM2S\yrsM2S_types.h        
+
+del /Q /F acs\acsProxy\acsAcProxy\AcIcdM\AcBufplen.h 
+del /Q /F acs\acsProxy\acsAcProxy\AcIcdM\AcEnum_st.h 
+del /Q /F acs\acsProxy\acsAcProxy\AcIcdM\AcFile.html 
+del /Q /F acs\acsProxy\acsAcProxy\AcIcdM\AcGeneral.h 
+del /Q /F acs\acsProxy\acsAcProxy\AcIcdM\AcIni.c     
+del /Q /F acs\acsProxy\acsAcProxy\AcIcdM\AcPri.h 
+del /Q /F acs\acsProxy\acsAcProxy\AcIcdM\AcType.h 
+
+del /Q /F acs\acsProxy\acsAhrsProxy\AhrsIcdM\AhrsBufplen.h 
+del /Q /F acs\acsProxy\acsAhrsProxy\AhrsIcdM\AhrsCvi.c 
+del /Q /F acs\acsProxy\acsAhrsProxy\AhrsIcdM\AhrsCvp.c 
+del /Q /F acs\acsProxy\acsAhrsProxy\AhrsIcdM\AhrsEnum_st.h 
+del /Q /F acs\acsProxy\acsAhrsProxy\AhrsIcdM\AhrsFile.html 
+del /Q /F acs\acsProxy\acsAhrsProxy\AhrsIcdM\AhrsGeneral.h 
+del /Q /F acs\acsProxy\acsAhrsProxy\AhrsIcdM\AhrsIni.c     
+del /Q /F acs\acsProxy\acsAhrsProxy\AhrsIcdM\AhrsPrc.h 
+del /Q /F acs\acsProxy\acsAhrsProxy\AhrsIcdM\AhrsPri.h 
+del /Q /F acs\acsProxy\acsAhrsProxy\AhrsIcdM\AhrsType.h 
+
+del /Q /F acs\acsProxy\acsAlnProxy\AlnIcdM\AlnBufplen.h 
+del /Q /F acs\acsProxy\acsAlnProxy\AlnIcdM\AlnCvi.c     
+del /Q /F acs\acsProxy\acsAlnProxy\AlnIcdM\AlnCvp.c     
+del /Q /F acs\acsProxy\acsAlnProxy\AlnIcdM\AlnEnum_st.h 
+del /Q /F acs\acsProxy\acsAlnProxy\AlnIcdM\AlnFile.html 
+del /Q /F acs\acsProxy\acsAlnProxy\AlnIcdM\AlnGeneral.h 
+del /Q /F acs\acsProxy\acsAlnProxy\AlnIcdM\AlnIni.c     
+del /Q /F acs\acsProxy\acsAlnProxy\AlnIcdM\AlnPrc.h     
+del /Q /F acs\acsProxy\acsAlnProxy\AlnIcdM\AlnPri.h   
+del /Q /F acs\acsProxy\acsAlnProxy\AlnIcdM\AlnType.h  
+
+del /Q /F acs\acsProxy\acsAtcProxy\AtcIcdM\AtcBufplen.h 
+del /Q /F acs\acsProxy\acsAtcProxy\AtcIcdM\AtcCvi.c     
+del /Q /F acs\acsProxy\acsAtcProxy\AtcIcdM\AtcCvp.c     
+del /Q /F acs\acsProxy\acsAtcProxy\AtcIcdM\AtcEnum_st.h 
+del /Q /F acs\acsProxy\acsAtcProxy\AtcIcdM\AtcFile.html 
+del /Q /F acs\acsProxy\acsAtcProxy\AtcIcdM\AtcGeneral.h 
+del /Q /F acs\acsProxy\acsAtcProxy\AtcIcdM\AtcIni.c     
+del /Q /F acs\acsProxy\acsAtcProxy\AtcIcdM\AtcPrc.h     
+del /Q /F acs\acsProxy\acsAtcProxy\AtcIcdM\AtcPri.h   
+del /Q /F acs\acsProxy\acsAtcProxy\AtcIcdM\AtcType.h  
+
+del /Q /F acs\acsProxy\acsCanBusOutBuilder\HlcIcdM\HlcBufplen.h 
+del /Q /F acs\acsProxy\acsCanBusOutBuilder\HlcIcdM\HlcCvi.c     
+del /Q /F acs\acsProxy\acsCanBusOutBuilder\HlcIcdM\HlcCvp.c     
+del /Q /F acs\acsProxy\acsCanBusOutBuilder\HlcIcdM\HlcEnum_st.h 
+del /Q /F acs\acsProxy\acsCanBusOutBuilder\HlcIcdM\HlcFile.html 
+del /Q /F acs\acsProxy\acsCanBusOutBuilder\HlcIcdM\HlcGeneral.h 
+del /Q /F acs\acsProxy\acsCanBusOutBuilder\HlcIcdM\HlcIni.c     
+del /Q /F acs\acsProxy\acsCanBusOutBuilder\HlcIcdM\HlcPrc.h     
+del /Q /F acs\acsProxy\acsCanBusOutBuilder\HlcIcdM\HlcPri.h   
+del /Q /F acs\acsProxy\acsCanBusOutBuilder\HlcIcdM\HlcType.h  
+
+del /Q /F acs\acsProxy\acsCanBusOutBuilder\HlcIcdT\HlctBufe.h    
+del /Q /F acs\acsProxy\acsCanBusOutBuilder\HlcIcdT\HlctBufp.h    
+del /Q /F acs\acsProxy\acsCanBusOutBuilder\HlcIcdT\HlctBufplen.h 
+del /Q /F acs\acsProxy\acsCanBusOutBuilder\HlcIcdT\HlctCvi.c     
+del /Q /F acs\acsProxy\acsCanBusOutBuilder\HlcIcdT\HlctCvp.c     
+del /Q /F acs\acsProxy\acsCanBusOutBuilder\HlcIcdT\HlctEnum_st.h 
+del /Q /F acs\acsProxy\acsCanBusOutBuilder\HlcIcdT\HlctFile.html 
+del /Q /F acs\acsProxy\acsCanBusOutBuilder\HlcIcdT\HlctGeneral.h 
+del /Q /F acs\acsProxy\acsCanBusOutBuilder\HlcIcdT\HlctIni.c     
+del /Q /F acs\acsProxy\acsCanBusOutBuilder\HlcIcdT\HlctPrc.h     
+del /Q /F acs\acsProxy\acsCanBusOutBuilder\HlcIcdT\HlctPri.h   
+del /Q /F acs\acsProxy\acsCanBusOutBuilder\HlcIcdT\HlctType.h  
+del /Q /F acs\acsProxy\acsCanBusOutBuilder\HlcIcdT\HlctVare.h  
+del /Q /F acs\acsProxy\acsCanBusOutBuilder\HlcIcdT\HlctVarp.h  
+
+del /Q /F acs\acsProxy\acsDcProxy\DcIcdM\DcBufplen.h 
+del /Q /F acs\acsProxy\acsDcProxy\DcIcdM\DcCvi.c     
+del /Q /F acs\acsProxy\acsDcProxy\DcIcdM\DcCvp.c     
+del /Q /F acs\acsProxy\acsDcProxy\DcIcdM\DcEnum_st.h 
+del /Q /F acs\acsProxy\acsDcProxy\DcIcdM\DcFile.html 
+del /Q /F acs\acsProxy\acsDcProxy\DcIcdM\DcGeneral.h 
+del /Q /F acs\acsProxy\acsDcProxy\DcIcdM\DcIni.c     
+del /Q /F acs\acsProxy\acsDcProxy\DcIcdM\DcPrc.h     
+del /Q /F acs\acsProxy\acsDcProxy\DcIcdM\DcPri.h   
+del /Q /F acs\acsProxy\acsDcProxy\DcIcdM\DcType.h  
+
+del /Q /F acs\acsProxy\acsDfProxy\DfIcdM\DfBufplen.h 
+del /Q /F acs\acsProxy\acsDfProxy\DfIcdM\DfCvi.c     
+del /Q /F acs\acsProxy\acsDfProxy\DfIcdM\DfCvp.c     
+del /Q /F acs\acsProxy\acsDfProxy\DfIcdM\DfEnum_st.h 
+del /Q /F acs\acsProxy\acsDfProxy\DfIcdM\DfFile.html 
+del /Q /F acs\acsProxy\acsDfProxy\DfIcdM\DfGeneral.h 
+del /Q /F acs\acsProxy\acsDfProxy\DfIcdM\DfIni.c     
+del /Q /F acs\acsProxy\acsDfProxy\DfIcdM\DfPrc.h     
+del /Q /F acs\acsProxy\acsDfProxy\DfIcdM\DfPri.h   
+del /Q /F acs\acsProxy\acsDfProxy\DfIcdM\DfType.h  
+
+del /Q /F acs\acsProxy\acsDgpsProxy\DgpsIcdM\DgpsBufplen.h 
+del /Q /F acs\acsProxy\acsDgpsProxy\DgpsIcdM\DgpsCvi.c     
+del /Q /F acs\acsProxy\acsDgpsProxy\DgpsIcdM\DgpsCvp.c     
+del /Q /F acs\acsProxy\acsDgpsProxy\DgpsIcdM\DgpsEnum_st.h 
+del /Q /F acs\acsProxy\acsDgpsProxy\DgpsIcdM\DgpsFile.html 
+del /Q /F acs\acsProxy\acsDgpsProxy\DgpsIcdM\DgpsGeneral.h 
+del /Q /F acs\acsProxy\acsDgpsProxy\DgpsIcdM\DgpsIni.c     
+del /Q /F acs\acsProxy\acsDgpsProxy\DgpsIcdM\DgpsPrc.h     
+del /Q /F acs\acsProxy\acsDgpsProxy\DgpsIcdM\DgpsPri.h   
+del /Q /F acs\acsProxy\acsDgpsProxy\DgpsIcdM\DgpsType.h  
+
+del /Q /F acs\acsProxy\acsDpProxy\DpIcdM\DpBufplen.h 
+del /Q /F acs\acsProxy\acsDpProxy\DpIcdM\DpCvi.c     
+del /Q /F acs\acsProxy\acsDpProxy\DpIcdM\DpCvp.c     
+del /Q /F acs\acsProxy\acsDpProxy\DpIcdM\DpEnum_st.h 
+del /Q /F acs\acsProxy\acsDpProxy\DpIcdM\DpFile.html 
+del /Q /F acs\acsProxy\acsDpProxy\DpIcdM\DpGeneral.h 
+del /Q /F acs\acsProxy\acsDpProxy\DpIcdM\DpIni.c     
+del /Q /F acs\acsProxy\acsDpProxy\DpIcdM\DpPrc.h     
+del /Q /F acs\acsProxy\acsDpProxy\DpIcdM\DpPri.h   
+del /Q /F acs\acsProxy\acsDpProxy\DpIcdM\DpType.h  
+
+del /Q /F acs\acsProxy\acsDpvProxy\DpvIcdM\DpvBufplen.h 
+del /Q /F acs\acsProxy\acsDpvProxy\DpvIcdM\DpvCvi.c     
+del /Q /F acs\acsProxy\acsDpvProxy\DpvIcdM\DpvCvp.c     
+del /Q /F acs\acsProxy\acsDpvProxy\DpvIcdM\DpvEnum_st.h 
+del /Q /F acs\acsProxy\acsDpvProxy\DpvIcdM\DpvFile.html 
+del /Q /F acs\acsProxy\acsDpvProxy\DpvIcdM\DpvGeneral.h 
+del /Q /F acs\acsProxy\acsDpvProxy\DpvIcdM\DpvIni.c     
+del /Q /F acs\acsProxy\acsDpvProxy\DpvIcdM\DpvPrc.h     
+del /Q /F acs\acsProxy\acsDpvProxy\DpvIcdM\DpvPri.h   
+del /Q /F acs\acsProxy\acsDpvProxy\DpvIcdM\DpvType.h  
+
+del /Q /F acs\acsProxy\acsIntcProxy\IntcIcdM\IntcBufplen.h 
+del /Q /F acs\acsProxy\acsIntcProxy\IntcIcdM\IntcCvi.c     
+del /Q /F acs\acsProxy\acsIntcProxy\IntcIcdM\IntcCvp.c     
+del /Q /F acs\acsProxy\acsIntcProxy\IntcIcdM\IntcEnum_st.h 
+del /Q /F acs\acsProxy\acsIntcProxy\IntcIcdM\IntcFile.html 
+del /Q /F acs\acsProxy\acsIntcProxy\IntcIcdM\IntcGeneral.h 
+del /Q /F acs\acsProxy\acsIntcProxy\IntcIcdM\IntcIni.c     
+del /Q /F acs\acsProxy\acsIntcProxy\IntcIcdM\IntcPrc.h     
+del /Q /F acs\acsProxy\acsIntcProxy\IntcIcdM\IntcPri.h   
+del /Q /F acs\acsProxy\acsIntcProxy\IntcIcdM\IntcType.h  
+
+del /Q /F acs\acsProxy\acsLogProxy\LogIcdM\LogBufplen.h 
+del /Q /F acs\acsProxy\acsLogProxy\LogIcdM\LogCvi.c     
+del /Q /F acs\acsProxy\acsLogProxy\LogIcdM\LogCvp.c     
+del /Q /F acs\acsProxy\acsLogProxy\LogIcdM\LogEnum_st.h 
+del /Q /F acs\acsProxy\acsLogProxy\LogIcdM\LogFile.html 
+del /Q /F acs\acsProxy\acsLogProxy\LogIcdM\LogGeneral.h 
+del /Q /F acs\acsProxy\acsLogProxy\LogIcdM\LogIni.c     
+del /Q /F acs\acsProxy\acsLogProxy\LogIcdM\LogPrc.h     
+del /Q /F acs\acsProxy\acsLogProxy\LogIcdM\LogPri.h   
+del /Q /F acs\acsProxy\acsLogProxy\LogIcdM\LogType.h  
+
+del /Q /F acs\acsProxy\acsLtProxy\LtIcdM\LtBufplen.h 
+del /Q /F acs\acsProxy\acsLtProxy\LtIcdM\LtCvi.c     
+del /Q /F acs\acsProxy\acsLtProxy\LtIcdM\LtCvp.c     
+del /Q /F acs\acsProxy\acsLtProxy\LtIcdM\LtEnum_st.h 
+del /Q /F acs\acsProxy\acsLtProxy\LtIcdM\LtFile.html 
+del /Q /F acs\acsProxy\acsLtProxy\LtIcdM\LtGeneral.h 
+del /Q /F acs\acsProxy\acsLtProxy\LtIcdM\LtIni.c     
+del /Q /F acs\acsProxy\acsLtProxy\LtIcdM\LtPrc.h     
+del /Q /F acs\acsProxy\acsLtProxy\LtIcdM\LtPri.h   
+del /Q /F acs\acsProxy\acsLtProxy\LtIcdM\LtType.h  
+
+del /Q /F acs\acsProxy\acsLvcProxy\LvcIcdM\LvcBufplen.h 
+del /Q /F acs\acsProxy\acsLvcProxy\LvcIcdM\LvcCvi.c     
+del /Q /F acs\acsProxy\acsLvcProxy\LvcIcdM\LvcCvp.c     
+del /Q /F acs\acsProxy\acsLvcProxy\LvcIcdM\LvcEnum_st.h 
+del /Q /F acs\acsProxy\acsLvcProxy\LvcIcdM\LvcFile.html 
+del /Q /F acs\acsProxy\acsLvcProxy\LvcIcdM\LvcGeneral.h 
+del /Q /F acs\acsProxy\acsLvcProxy\LvcIcdM\LvcIni.c     
+del /Q /F acs\acsProxy\acsLvcProxy\LvcIcdM\LvcPrc.h     
+del /Q /F acs\acsProxy\acsLvcProxy\LvcIcdM\LvcPri.h   
+del /Q /F acs\acsProxy\acsLvcProxy\LvcIcdM\LvcType.h  
+
+del /Q /F acs\acsProxy\acsMdProxy\MdIcdM\MdBufplen.h 
+del /Q /F acs\acsProxy\acsMdProxy\MdIcdM\MdCvi.c     
+del /Q /F acs\acsProxy\acsMdProxy\MdIcdM\MdCvp.c     
+del /Q /F acs\acsProxy\acsMdProxy\MdIcdM\MdEnum_st.h 
+del /Q /F acs\acsProxy\acsMdProxy\MdIcdM\MdFile.html 
+del /Q /F acs\acsProxy\acsMdProxy\MdIcdM\MdGeneral.h 
+del /Q /F acs\acsProxy\acsMdProxy\MdIcdM\MdIni.c     
+del /Q /F acs\acsProxy\acsMdProxy\MdIcdM\MdPrc.h     
+del /Q /F acs\acsProxy\acsMdProxy\MdIcdM\MdPri.h   
+del /Q /F acs\acsProxy\acsMdProxy\MdIcdM\MdType.h  
+
+del /Q /F acs\acsProxy\acsPduProxy\PduIcdM\PduBufplen.h 
+del /Q /F acs\acsProxy\acsPduProxy\PduIcdM\PduCvi.c     
+del /Q /F acs\acsProxy\acsPduProxy\PduIcdM\PduCvp.c     
+del /Q /F acs\acsProxy\acsPduProxy\PduIcdM\PduEnum_st.h 
+del /Q /F acs\acsProxy\acsPduProxy\PduIcdM\PduFile.html 
+del /Q /F acs\acsProxy\acsPduProxy\PduIcdM\PduGeneral.h 
+del /Q /F acs\acsProxy\acsPduProxy\PduIcdM\PduIni.c     
+del /Q /F acs\acsProxy\acsPduProxy\PduIcdM\PduPri.h   
+del /Q /F acs\acsProxy\acsPduProxy\PduIcdM\PduType.h  
+
+del /Q /F acs\acsProxy\acsSilProxy\SilIcdM\SilBufplen.h 
+del /Q /F acs\acsProxy\acsSilProxy\SilIcdM\SilCvi.c     
+del /Q /F acs\acsProxy\acsSilProxy\SilIcdM\SilCvp.c     
+del /Q /F acs\acsProxy\acsSilProxy\SilIcdM\SilEnum_st.h 
+del /Q /F acs\acsProxy\acsSilProxy\SilIcdM\SilFile.html 
+del /Q /F acs\acsProxy\acsSilProxy\SilIcdM\SilGeneral.h 
+del /Q /F acs\acsProxy\acsSilProxy\SilIcdM\SilIni.c     
+del /Q /F acs\acsProxy\acsSilProxy\SilIcdM\SilPrc.h   
+del /Q /F acs\acsProxy\acsSilProxy\SilIcdM\SilPri.h   
+del /Q /F acs\acsProxy\acsSilProxy\SilIcdM\SilType.h  
+
+del /Q /F acs\acsProxy\acsSwProxy\SwIcdM\SwBufplen.h 
+del /Q /F acs\acsProxy\acsSwProxy\SwIcdM\SwCvi.c     
+del /Q /F acs\acsProxy\acsSwProxy\SwIcdM\SwCvp.c     
+del /Q /F acs\acsProxy\acsSwProxy\SwIcdM\SwEnum_st.h 
+del /Q /F acs\acsProxy\acsSwProxy\SwIcdM\SwFile.html 
+del /Q /F acs\acsProxy\acsSwProxy\SwIcdM\SwGeneral.h 
+del /Q /F acs\acsProxy\acsSwProxy\SwIcdM\SwIni.c     
+del /Q /F acs\acsProxy\acsSwProxy\SwIcdM\SwPrc.h     
+del /Q /F acs\acsProxy\acsSwProxy\SwIcdM\SwPri.h   
+del /Q /F acs\acsProxy\acsSwProxy\SwIcdM\SwType.h  
+
+del /Q /F acs\acsProxy\acsTasProxy\TasIcdM\TasBufplen.h 
+del /Q /F acs\acsProxy\acsTasProxy\TasIcdM\TasEnum_st.h 
+del /Q /F acs\acsProxy\acsTasProxy\TasIcdM\TasFile.html 
+del /Q /F acs\acsProxy\acsTasProxy\TasIcdM\TasGeneral.h 
+del /Q /F acs\acsProxy\acsTasProxy\TasIcdM\TasIni.c     
+del /Q /F acs\acsProxy\acsTasProxy\TasIcdM\TasPri.h   
+del /Q /F acs\acsProxy\acsTasProxy\TasIcdM\TasType.h  
+
+del /Q /F acs\acsProxy\acsVlProxy\VlIcdM\VlBufplen.h 
+del /Q /F acs\acsProxy\acsVlProxy\VlIcdM\VlCvi.c     
+del /Q /F acs\acsProxy\acsVlProxy\VlIcdM\VlCvp.c     
+del /Q /F acs\acsProxy\acsVlProxy\VlIcdM\VlEnum_st.h 
+del /Q /F acs\acsProxy\acsVlProxy\VlIcdM\VlFile.html 
+del /Q /F acs\acsProxy\acsVlProxy\VlIcdM\VlGeneral.h 
+del /Q /F acs\acsProxy\acsVlProxy\VlIcdM\VlIni.c     
+del /Q /F acs\acsProxy\acsVlProxy\VlIcdM\VlPrc.h     
+del /Q /F acs\acsProxy\acsVlProxy\VlIcdM\VlPri.h   
+del /Q /F acs\acsProxy\acsVlProxy\VlIcdM\VlType.h  
+
+del /Q /F acs\acsProxy\acsWmlProxy\WmlIcdM\WmlBufplen.h 
+del /Q /F acs\acsProxy\acsWmlProxy\WmlIcdM\WmlCvi.c     
+del /Q /F acs\acsProxy\acsWmlProxy\WmlIcdM\WmlCvp.c     
+del /Q /F acs\acsProxy\acsWmlProxy\WmlIcdM\WmlEnum_st.h 
+del /Q /F acs\acsProxy\acsWmlProxy\WmlIcdM\WmlFile.html 
+del /Q /F acs\acsProxy\acsWmlProxy\WmlIcdM\WmlGeneral.h 
+del /Q /F acs\acsProxy\acsWmlProxy\WmlIcdM\WmlIni.c     
+del /Q /F acs\acsProxy\acsWmlProxy\WmlIcdM\WmlPrc.h     
+del /Q /F acs\acsProxy\acsWmlProxy\WmlIcdM\WmlPri.h   
+del /Q /F acs\acsProxy\acsWmlProxy\WmlIcdM\WmlType.h  
+
+del /Q /F acs\acsProxy\acsYrsProxy\YrsIcdM\YrsBufplen.h 
+del /Q /F acs\acsProxy\acsYrsProxy\YrsIcdM\YrsCvi.c     
+del /Q /F acs\acsProxy\acsYrsProxy\YrsIcdM\YrsCvp.c     
+del /Q /F acs\acsProxy\acsYrsProxy\YrsIcdM\YrsEnum_st.h 
+del /Q /F acs\acsProxy\acsYrsProxy\YrsIcdM\YrsFile.html 
+del /Q /F acs\acsProxy\acsYrsProxy\YrsIcdM\YrsGeneral.h 
+del /Q /F acs\acsProxy\acsYrsProxy\YrsIcdM\YrsIni.c     
+del /Q /F acs\acsProxy\acsYrsProxy\YrsIcdM\YrsPrc.h     
+del /Q /F acs\acsProxy\acsYrsProxy\YrsIcdM\YrsPri.h   
+del /Q /F acs\acsProxy\acsYrsProxy\YrsIcdM\YrsType.h  
+
+del /Q /F Simulink\Models\Acs\acsAcM2S\AcIcdS\AcPenum_st.h 
+del /Q /F Simulink\Models\Acs\acsAcM2S\AcIcdS\AcPgeneral.h 
+
+del /Q /F Simulink\Models\Acs\acsAhrsM2S\AhrsIcdS\AhrsPenum_st.h 
+del /Q /F Simulink\Models\Acs\acsAhrsM2S\AhrsIcdS\AhrsPgeneral.h 
+
+del /Q /F Simulink\Models\Acs\acsAlnM2S\AlnIcdS\AlnPenum_st.h 
+del /Q /F Simulink\Models\Acs\acsAlnM2S\AlnIcdS\AlnPgeneral.h 
+
+del /Q /F Simulink\Models\Acs\acsAtcM2S\AtcIcdS\AtcPenum_st.h 
+del /Q /F Simulink\Models\Acs\acsAtcM2S\AtcIcdS\AtcPgeneral.h 
+
+del /Q /F Simulink\Models\Acs\acsDcM2S\DcIcdS\DcPenum_st.h 
+del /Q /F Simulink\Models\Acs\acsDcM2S\DcIcdS\DcPgeneral.h 
+
+del /Q /F Simulink\Models\Acs\acsDfM2S\DfIcdS\DfPenum_st.h 
+del /Q /F Simulink\Models\Acs\acsDfM2S\DfIcdS\DfPgeneral.h 
+
+del /Q /F Simulink\Models\Acs\acsDgpsM2S\DgpsIcdS\DgpsPenum_st.h 
+del /Q /F Simulink\Models\Acs\acsDgpsM2S\DgpsIcdS\DgpsPgeneral.h 
+
+del /Q /F Simulink\Models\Acs\acsDpM2S\DpIcdS\DpPenum_st.h 
+del /Q /F Simulink\Models\Acs\acsDpM2S\DpIcdS\DpPgeneral.h 
+
+del /Q /F Simulink\Models\Acs\acsDpvM2S\DpvIcdS\DpvPenum_st.h 
+del /Q /F Simulink\Models\Acs\acsDpvM2S\DpvIcdS\DpvPgeneral.h 
+
+del /Q /F Simulink\Models\Acs\acsIntcM2S\IntcIcdS\IntcPenum_st.h 
+del /Q /F Simulink\Models\Acs\acsIntcM2S\IntcIcdS\IntcPgeneral.h
+
+del /Q /F Simulink\Models\Acs\acsLtM2S\LtIcdS\LtPenum_st.h 
+del /Q /F Simulink\Models\Acs\acsLtM2S\LtIcdS\LtPgeneral.h 
+
+del /Q /F Simulink\Models\Acs\acsLvcM2S\LvcIcdS\LvcPenum_st.h 
+del /Q /F Simulink\Models\Acs\acsLvcM2S\LvcIcdS\LvcPgeneral.h 
+
+del /Q /F Simulink\Models\Acs\acsMdM2S\MdIcdS\MdPenum_st.h 
+del /Q /F Simulink\Models\Acs\acsMdM2S\MdIcdS\MdPgeneral.h 
+
+del /Q /F Simulink\Models\Acs\acsPduM2S\PduIcdS\PduPenum_st.h 
+del /Q /F Simulink\Models\Acs\acsPduM2S\PduIcdS\PduPgeneral.h 
+del /Q /F Simulink\Models\Acs\acsSwM2S\SwIcdS\SwPenum_st.h 
+del /Q /F Simulink\Models\Acs\acsSwM2S\SwIcdS\SwPgeneral.h 
+
+del /Q /F Simulink\Models\Acs\acsTasM2S\TasIcdS\TasPenum_st.h 
+del /Q /F Simulink\Models\Acs\acsTasM2S\TasIcdS\TasPgeneral.h 
+
+del /Q /F Simulink\Models\Acs\acsVlM2S\VlIcdS\VlPenum_st.h 
+del /Q /F Simulink\Models\Acs\acsVlM2S\VlIcdS\VlPgeneral.h 
+
+del /Q /F Simulink\Models\Acs\acsWmlM2S\WmlIcdS\WmlPenum_st.h 
+del /Q /F Simulink\Models\Acs\acsWmlM2S\WmlIcdS\WmlPgeneral.h 
+
+del /Q /F Simulink\Models\Acs\acsYrsM2S\YrsIcdS\YrsPenum_st.h 
+del /Q /F Simulink\Models\Acs\acsYrsM2S\YrsIcdS\YrsPgeneral.h 
+
+del /Q /F TXB_WB_APP\appCommon\appSimulinkCommon\asymA_deb_enbld.c           
+del /Q /F TXB_WB_APP\appCommon\appSimulinkCommon\asymA_deb_enbld.h           
+del /Q /F TXB_WB_APP\appCommon\appSimulinkCommon\asymA_deb_enbld_private.h   
+del /Q /F TXB_WB_APP\appCommon\appSimulinkCommon\asymA_deb_enbld_types.h     
+
+del /Q /F TXB_WB_APP\appCommon\appSimulinkCommon\asymC_debounce.c           
+del /Q /F TXB_WB_APP\appCommon\appSimulinkCommon\asymC_debounce.h           
+del /Q /F TXB_WB_APP\appCommon\appSimulinkCommon\asymC_debounce_private.h   
+del /Q /F TXB_WB_APP\appCommon\appSimulinkCommon\asymC_debounce_types.h     
+
+del /Q /F TXB_WB_APP\appCommon\appSimulinkCommon\asymD_deb_noninit.c           
+del /Q /F TXB_WB_APP\appCommon\appSimulinkCommon\asymD_deb_noninit.h           
+del /Q /F TXB_WB_APP\appCommon\appSimulinkCommon\asymD_deb_noninit_private.h   
+del /Q /F TXB_WB_APP\appCommon\appSimulinkCommon\asymD_deb_noninit_types.h     
+
+del /Q /F TXB_WB_APP\appCommon\appSimulinkCommon\basic_rate_limiter.c           
+del /Q /F TXB_WB_APP\appCommon\appSimulinkCommon\basic_rate_limiter.h           
+del /Q /F TXB_WB_APP\appCommon\appSimulinkCommon\basic_rate_limiter_private.h   
+del /Q /F TXB_WB_APP\appCommon\appSimulinkCommon\basic_rate_limiter_types.h     
+
+del /Q /F TXB_WB_APP\appCommon\appSimulinkCommon\BINARYSEARCH_real32_T.c           
+del /Q /F TXB_WB_APP\appCommon\appSimulinkCommon\BINARYSEARCH_real32_T.h          
+
+del /Q /F TXB_WB_APP\appCommon\appSimulinkCommon\falling_edge.c           
+del /Q /F TXB_WB_APP\appCommon\appSimulinkCommon\falling_edge.h           
+del /Q /F TXB_WB_APP\appCommon\appSimulinkCommon\falling_edge_private.h   
+del /Q /F TXB_WB_APP\appCommon\appSimulinkCommon\falling_edge_types.h     
+
+del /Q /F TXB_WB_APP\appCommon\appSimulinkCommon\first_order_filter.c           
+del /Q /F TXB_WB_APP\appCommon\appSimulinkCommon\first_order_filter.h           
+del /Q /F TXB_WB_APP\appCommon\appSimulinkCommon\first_order_filter_private.h   
+del /Q /F TXB_WB_APP\appCommon\appSimulinkCommon\first_order_filter_types.h     
+
+del /Q /F TXB_WB_APP\appCommon\appSimulinkCommon\hysteresis.c          
+del /Q /F TXB_WB_APP\appCommon\appSimulinkCommon\hysteresis.h           
+del /Q /F TXB_WB_APP\appCommon\appSimulinkCommon\hysteresis_private.h   
+del /Q /F TXB_WB_APP\appCommon\appSimulinkCommon\hysteresis_types.h    
+
+del /Q /F TXB_WB_APP\appCommon\appSimulinkCommon\latch.c           
+del /Q /F TXB_WB_APP\appCommon\appSimulinkCommon\latch.h           
+del /Q /F TXB_WB_APP\appCommon\appSimulinkCommon\latch_private.h   
+del /Q /F TXB_WB_APP\appCommon\appSimulinkCommon\latch_types.h     
+
+del /Q /F TXB_WB_APP\appCommon\appSimulinkCommon\LookUp_real32_T_real32_T_ZERO.c           
+del /Q /F TXB_WB_APP\appCommon\appSimulinkCommon\LookUp_real32_T_real32_T_ZERO.h           
+del /Q /F TXB_WB_APP\appCommon\appSimulinkCommon\rising_edge.c           
+del /Q /F TXB_WB_APP\appCommon\appSimulinkCommon\rising_edge.h           
+del /Q /F TXB_WB_APP\appCommon\appSimulinkCommon\rising_edge_private.h   
+del /Q /F TXB_WB_APP\appCommon\appSimulinkCommon\rising_edge_types.h     
+
+del /Q /F TXB_WB_APP\appCommon\appSimulinkCommon\rt_look1d32.c           
+del /Q /F TXB_WB_APP\appCommon\appSimulinkCommon\rt_look1d32.h           
+del /Q /F TXB_WB_APP\appCommon\appSimulinkCommon\rt_look32.c           
+del /Q /F TXB_WB_APP\appCommon\appSimulinkCommon\rt_look32.h           
+del /Q /F TXB_WB_APP\appCommon\appSimulinkCommon\rt_pow32.c          
+del /Q /F TXB_WB_APP\appCommon\appSimulinkCommon\rt_pow32.h          
+del /Q /F TXB_WB_APP\appCommon\appSimulinkCommon\rtw_shared_utils.h           
+del /Q /F TXB_WB_APP\appCommon\appSimulinkCommon\rtwtypes.h           
+
+del /Q /F TXB_WB_APP\appCommon\appSimulinkCommon\sr_latch.c           
+del /Q /F TXB_WB_APP\appCommon\appSimulinkCommon\sr_latch.h           
+del /Q /F TXB_WB_APP\appCommon\appSimulinkCommon\sr_latch_private.h   
+del /Q /F TXB_WB_APP\appCommon\appSimulinkCommon\sr_latch_types.h     
+
+del /Q /F TXB_WB_APP\appCommon\appSimulinkCommon\symmetrical_debounce.c           
+del /Q /F TXB_WB_APP\appCommon\appSimulinkCommon\symmetrical_debounce.h           
+del /Q /F TXB_WB_APP\appCommon\appSimulinkCommon\symmetrical_debounce_data.c      
+del /Q /F TXB_WB_APP\appCommon\appSimulinkCommon\symmetrical_debounce_private.h   
+del /Q /F TXB_WB_APP\appCommon\appSimulinkCommon\symmetrical_debounce_types.h    
+
+del /Q /F TXB_WB_APP\appDamperControl\damper_control_context.a2l              
+del /Q /F TXB_WB_APP\appDamperControl\damper_control_context.c                
+del /Q /F TXB_WB_APP\appDamperControl\damper_control_context.h                
+del /Q /F TXB_WB_APP\appDamperControl\damper_control_context_private.h        
+del /Q /F TXB_WB_APP\appDamperControl\damper_control_context_types.h          
+del /Q /F TXB_WB_APP\appDamperControl\dr_cal_defs.c           
+del /Q /F TXB_WB_APP\appDamperControl\dr_ref.a2l              
+del /Q /F TXB_WB_APP\appDamperControl\dr_ref.c                
+del /Q /F TXB_WB_APP\appDamperControl\dr_ref.h                
+del /Q /F TXB_WB_APP\appDamperControl\dr_ref_private.h       
+del /Q /F TXB_WB_APP\appDamperControl\dr_ref_types.h          
+del /Q /F TXB_WB_APP\appDamperControl\dr_var_defs.c          
+
+del /Q /F TXB_WB_APP\appDemandManagement\bc_cal_defs.c           
+del /Q /F TXB_WB_APP\appDemandManagement\bc_ref.a2l              
+del /Q /F TXB_WB_APP\appDemandManagement\bc_ref.c                
+del /Q /F TXB_WB_APP\appDemandManagement\bc_ref.h                
+del /Q /F TXB_WB_APP\appDemandManagement\bc_ref_private.h        
+del /Q /F TXB_WB_APP\appDemandManagement\bc_ref_types.h          
+del /Q /F TXB_WB_APP\appDemandManagement\bc_var_defs.c           
+del /Q /F TXB_WB_APP\appDemandManagement\cl_cal_defs.c           
+del /Q /F TXB_WB_APP\appDemandManagement\cl_ref.a2l             
+del /Q /F TXB_WB_APP\appDemandManagement\cl_ref.c                
+del /Q /F TXB_WB_APP\appDemandManagement\cl_ref.h                
+del /Q /F TXB_WB_APP\appDemandManagement\cl_ref_private.h        
+del /Q /F TXB_WB_APP\appDemandManagement\cl_ref_types.h          
+del /Q /F TXB_WB_APP\appDemandManagement\cl_var_defs.c           
+del /Q /F TXB_WB_APP\appDemandManagement\demand_management_context.a2l             
+del /Q /F TXB_WB_APP\appDemandManagement\demand_management_context.c                
+del /Q /F TXB_WB_APP\appDemandManagement\demand_management_context.h              
+del /Q /F TXB_WB_APP\appDemandManagement\demand_management_context_private.h        
+del /Q /F TXB_WB_APP\appDemandManagement\demand_management_context_types.h        
+del /Q /F TXB_WB_APP\appDemandManagement\dw_cal_defs.c           
+del /Q /F TXB_WB_APP\appDemandManagement\dw_ref.a2l              
+del /Q /F TXB_WB_APP\appDemandManagement\dw_ref.c                
+del /Q /F TXB_WB_APP\appDemandManagement\dw_ref.h                
+del /Q /F TXB_WB_APP\appDemandManagement\dw_ref_private.h        
+del /Q /F TXB_WB_APP\appDemandManagement\dw_ref_types.h          
+del /Q /F TXB_WB_APP\appDemandManagement\dw_var_defs.c           
+del /Q /F TXB_WB_APP\appDemandManagement\ms_cal_defs.c           
+del /Q /F TXB_WB_APP\appDemandManagement\ms_ref.a2l             
+del /Q /F TXB_WB_APP\appDemandManagement\ms_ref.c               
+del /Q /F TXB_WB_APP\appDemandManagement\ms_ref.h                
+del /Q /F TXB_WB_APP\appDemandManagement\ms_ref_data.c           
+del /Q /F TXB_WB_APP\appDemandManagement\ms_ref_private.h        
+del /Q /F TXB_WB_APP\appDemandManagement\ms_ref_types.h          
+del /Q /F TXB_WB_APP\appDemandManagement\ms_var_defs.c           
+del /Q /F TXB_WB_APP\appDemandManagement\nt_cal_defs.c           
+del /Q /F TXB_WB_APP\appDemandManagement\nt_ref.a2l              
+del /Q /F TXB_WB_APP\appDemandManagement\nt_ref.c                
+del /Q /F TXB_WB_APP\appDemandManagement\nt_ref.h                
+del /Q /F TXB_WB_APP\appDemandManagement\nt_ref_private.h        
+del /Q /F TXB_WB_APP\appDemandManagement\nt_ref_types.h          
+del /Q /F TXB_WB_APP\appDemandManagement\nt_var_defs.c           
+del /Q /F TXB_WB_APP\appDemandManagement\pp_cal_defs.c           
+del /Q /F TXB_WB_APP\appDemandManagement\pp_ref.a2l              
+del /Q /F TXB_WB_APP\appDemandManagement\pp_ref.c                
+del /Q /F TXB_WB_APP\appDemandManagement\pp_ref.h                
+del /Q /F TXB_WB_APP\appDemandManagement\pp_ref_private.h        
+del /Q /F TXB_WB_APP\appDemandManagement\pp_ref_types.h          
+del /Q /F TXB_WB_APP\appDemandManagement\pp_var_defs.c           
+del /Q /F TXB_WB_APP\appDemandManagement\sc_cal_defs.c           
+del /Q /F TXB_WB_APP\appDemandManagement\sc_ref.a2l              
+del /Q /F TXB_WB_APP\appDemandManagement\sc_ref.c               
+del /Q /F TXB_WB_APP\appDemandManagement\sc_ref.h                
+del /Q /F TXB_WB_APP\appDemandManagement\sc_ref_private.h        
+del /Q /F TXB_WB_APP\appDemandManagement\sc_ref_types.h          
+del /Q /F TXB_WB_APP\appDemandManagement\sc_var_defs.c           
+del /Q /F TXB_WB_APP\appDemandManagement\so_cal_defs.c          
+del /Q /F TXB_WB_APP\appDemandManagement\so_ref.a2l             
+del /Q /F TXB_WB_APP\appDemandManagement\so_ref.c              
+del /Q /F TXB_WB_APP\appDemandManagement\so_ref.h                
+del /Q /F TXB_WB_APP\appDemandManagement\so_ref_private.h        
+del /Q /F TXB_WB_APP\appDemandManagement\so_ref_types.h          
+del /Q /F TXB_WB_APP\appDemandManagement\so_var_defs.c           
+del /Q /F TXB_WB_APP\appDemandManagement\wm_cal_defs.c           
+del /Q /F TXB_WB_APP\appDemandManagement\wm_ref.a2l              
+del /Q /F TXB_WB_APP\appDemandManagement\wm_ref.c                
+del /Q /F TXB_WB_APP\appDemandManagement\wm_ref.h                
+del /Q /F TXB_WB_APP\appDemandManagement\wm_ref_private.h        
+del /Q /F TXB_WB_APP\appDemandManagement\wm_ref_types.h          
+del /Q /F TXB_WB_APP\appDemandManagement\wm_var_defs.c           
+del /Q /F TXB_WB_APP\appEngineManager\em_cal_defs.c           
+del /Q /F TXB_WB_APP\appEngineManager\em_context.a2l             
+del /Q /F TXB_WB_APP\appEngineManager\em_context.c                
+del /Q /F TXB_WB_APP\appEngineManager\em_context.h                
+del /Q /F TXB_WB_APP\appEngineManager\em_context_private.h        
+del /Q /F TXB_WB_APP\appEngineManager\em_context_trace.html        
+del /Q /F TXB_WB_APP\appEngineManager\em_context_types.h          
+del /Q /F TXB_WB_APP\appEngineManager\em_ref.a2l              
+del /Q /F TXB_WB_APP\appEngineManager\em_ref.c                
+del /Q /F TXB_WB_APP\appEngineManager\em_ref.h                
+del /Q /F TXB_WB_APP\appEngineManager\em_ref_private.h       
+del /Q /F TXB_WB_APP\appEngineManager\em_ref_trace.html       
+del /Q /F TXB_WB_APP\appEngineManager\em_ref_types.h          
+del /Q /F TXB_WB_APP\appEngineManager\em_var_defs.c           
+
+del /Q /F TXB_WB_APP\appForceControl\be_cal_defs.c           
+del /Q /F TXB_WB_APP\appForceControl\be_ref.a2l              
+del /Q /F TXB_WB_APP\appForceControl\be_ref.c                
+del /Q /F TXB_WB_APP\appForceControl\be_ref.h                
+del /Q /F TXB_WB_APP\appForceControl\be_ref_private.h        
+del /Q /F TXB_WB_APP\appForceControl\be_ref_types.h          
+del /Q /F TXB_WB_APP\appForceControl\be_var_defs.c           
+del /Q /F TXB_WB_APP\appForceControl\bf_cal_defs.c           
+del /Q /F TXB_WB_APP\appForceControl\bf_ref.a2l              
+del /Q /F TXB_WB_APP\appForceControl\bf_ref.c                
+del /Q /F TXB_WB_APP\appForceControl\bf_ref.h                
+del /Q /F TXB_WB_APP\appForceControl\bf_ref_private.h        
+del /Q /F TXB_WB_APP\appForceControl\bf_ref_types.h          
+del /Q /F TXB_WB_APP\appForceControl\bf_var_defs.c           
+del /Q /F TXB_WB_APP\appForceControl\fc_cal_defs.c           
+del /Q /F TXB_WB_APP\appForceControl\fc_ref.a2l              
+del /Q /F TXB_WB_APP\appForceControl\fc_ref.c                
+del /Q /F TXB_WB_APP\appForceControl\fc_ref.h                
+del /Q /F TXB_WB_APP\appForceControl\fc_ref_private.h        
+del /Q /F TXB_WB_APP\appForceControl\fc_ref_types.h          
+del /Q /F TXB_WB_APP\appForceControl\fc_var_defs.c           
+del /Q /F TXB_WB_APP\appForceControl\fe_cal_defs.c           
+del /Q /F TXB_WB_APP\appForceControl\fe_ref.a2l              
+del /Q /F TXB_WB_APP\appForceControl\fe_ref.c               
+del /Q /F TXB_WB_APP\appForceControl\fe_ref.h                
+del /Q /F TXB_WB_APP\appForceControl\fe_ref_private.h        
+del /Q /F TXB_WB_APP\appForceControl\fe_ref_types.h          
+del /Q /F TXB_WB_APP\appForceControl\fe_var_defs.c          
+del /Q /F TXB_WB_APP\appForceControl\ff_cal_defs.c          
+del /Q /F TXB_WB_APP\appForceControl\ff_ref.a2l             
+del /Q /F TXB_WB_APP\appForceControl\ff_ref.c               
+del /Q /F TXB_WB_APP\appForceControl\ff_ref.h                
+del /Q /F TXB_WB_APP\appForceControl\ff_ref_private.h       
+del /Q /F TXB_WB_APP\appForceControl\ff_ref_types.h         
+del /Q /F TXB_WB_APP\appForceControl\ff_var_defs.c           
+del /Q /F TXB_WB_APP\appForceControl\force_control_context.a2l              
+del /Q /F TXB_WB_APP\appForceControl\force_control_context.c                
+del /Q /F TXB_WB_APP\appForceControl\force_control_context.h                
+del /Q /F TXB_WB_APP\appForceControl\force_control_context_private.h        
+del /Q /F TXB_WB_APP\appForceControl\force_control_context_types.h          
+del /Q /F TXB_WB_APP\appForceControl\rm_cal_defs.c           
+del /Q /F TXB_WB_APP\appForceControl\rm_ref.a2l             
+del /Q /F TXB_WB_APP\appForceControl\rm_ref.c               
+del /Q /F TXB_WB_APP\appForceControl\rm_ref.h                
+del /Q /F TXB_WB_APP\appForceControl\rm_ref_private.h       
+del /Q /F TXB_WB_APP\appForceControl\rm_ref_types.h          
+del /Q /F TXB_WB_APP\appForceControl\rm_var_defs.c           
+del /Q /F TXB_WB_APP\appForceControl\td_cal_defs.c         
+del /Q /F TXB_WB_APP\appForceControl\td_ref.a2l              
+del /Q /F TXB_WB_APP\appForceControl\td_ref.c                
+del /Q /F TXB_WB_APP\appForceControl\td_ref.h                
+del /Q /F TXB_WB_APP\appForceControl\td_ref_private.h        
+del /Q /F TXB_WB_APP\appForceControl\td_ref_types.h          
+del /Q /F TXB_WB_APP\appForceControl\td_var_defs.c           
+
+del /Q /F TXB_WB_APP\appHealthMonitor\hm_bul_ref.c           
+del /Q /F TXB_WB_APP\appHealthMonitor\hm_bul_ref.h           
+del /Q /F TXB_WB_APP\appHealthMonitor\hm_bul_ref_private.h   
+del /Q /F TXB_WB_APP\appHealthMonitor\hm_bul_ref_types.h     
+del /Q /F TXB_WB_APP\appHealthMonitor\hm_cal_defs.c          
+del /Q /F TXB_WB_APP\appHealthMonitor\hm_context.a2l         
+del /Q /F TXB_WB_APP\appHealthMonitor\hm_context.c           
+del /Q /F TXB_WB_APP\appHealthMonitor\hm_context.h           
+del /Q /F TXB_WB_APP\appHealthMonitor\hm_context_private.h   
+del /Q /F TXB_WB_APP\appHealthMonitor\hm_context_types.h     
+del /Q /F TXB_WB_APP\appHealthMonitor\hm_mfl_ref.c           
+del /Q /F TXB_WB_APP\appHealthMonitor\hm_mfl_ref.h           
+del /Q /F TXB_WB_APP\appHealthMonitor\hm_mfl_ref_private.h   
+del /Q /F TXB_WB_APP\appHealthMonitor\hm_mfl_ref_types.h     
+del /Q /F TXB_WB_APP\appHealthMonitor\hm_ref.a2l         
+del /Q /F TXB_WB_APP\appHealthMonitor\hm_ref.c           
+del /Q /F TXB_WB_APP\appHealthMonitor\hm_ref.h           
+del /Q /F TXB_WB_APP\appHealthMonitor\hm_ref_private.h   
+del /Q /F TXB_WB_APP\appHealthMonitor\hm_ref_types.h     
+del /Q /F TXB_WB_APP\appHealthMonitor\hm_var_defs.c           
+
+del /Q /F TXB_WB_APP\appLocalization\loc_cal_defs.c           
+del /Q /F TXB_WB_APP\appLocalization\loc_context.a2l              
+del /Q /F TXB_WB_APP\appLocalization\loc_context.c                
+del /Q /F TXB_WB_APP\appLocalization\loc_context.h                
+del /Q /F TXB_WB_APP\appLocalization\loc_context_private.h        
+del /Q /F TXB_WB_APP\appLocalization\loc_context_types.h          
+del /Q /F TXB_WB_APP\appLocalization\loc_var_defs.c          
+del /Q /F TXB_WB_APP\appLocalization\locAzFil_ref.c               
+del /Q /F TXB_WB_APP\appLocalization\locAzFil_ref.h                
+del /Q /F TXB_WB_APP\appLocalization\locAzFil_ref_private.h        
+del /Q /F TXB_WB_APP\appLocalization\locAzFil_ref_types.h        
+del /Q /F TXB_WB_APP\appLocalization\locAzFus_ref.c              
+del /Q /F TXB_WB_APP\appLocalization\locAzFus_ref.h              
+del /Q /F TXB_WB_APP\appLocalization\locAzFus_ref_private.h      
+del /Q /F TXB_WB_APP\appLocalization\locAzFus_ref_types.h        
+del /Q /F TXB_WB_APP\appLocalization\locDgpsFus.c              
+del /Q /F TXB_WB_APP\appLocalization\locDgpsFus.h              
+del /Q /F TXB_WB_APP\appLocalization\locDgpsFus_private.h      
+del /Q /F TXB_WB_APP\appLocalization\locDgpsFus_ref.c              
+del /Q /F TXB_WB_APP\appLocalization\locDgpsFus_ref.h              
+del /Q /F TXB_WB_APP\appLocalization\locDgpsFus_ref_private.h      
+del /Q /F TXB_WB_APP\appLocalization\locDgpsFus_ref_types.h        
+del /Q /F TXB_WB_APP\appLocalization\locDgpsFus_types.h       
+del /Q /F TXB_WB_APP\appLocalization\locOdo_ref.c              
+del /Q /F TXB_WB_APP\appLocalization\locOdo_ref.h              
+del /Q /F TXB_WB_APP\appLocalization\locOdo_ref_private.h      
+del /Q /F TXB_WB_APP\appLocalization\locOdo_ref_types.h        
+del /Q /F TXB_WB_APP\appLocalization\locPosFil_ref.c              
+del /Q /F TXB_WB_APP\appLocalization\locPosFil_ref.h              
+del /Q /F TXB_WB_APP\appLocalization\locPosFil_ref_private.h      
+del /Q /F TXB_WB_APP\appLocalization\locPosFil_ref_types.h        
+del /Q /F TXB_WB_APP\appLocalization\locTrstL_ref.c              
+del /Q /F TXB_WB_APP\appLocalization\locTrstL_ref.h              
+del /Q /F TXB_WB_APP\appLocalization\locTrstL_ref_private.h      
+del /Q /F TXB_WB_APP\appLocalization\locTrstL_ref_types.h        
+del /Q /F TXB_WB_APP\appLocalization\locVelFil_ref.c              
+del /Q /F TXB_WB_APP\appLocalization\locVelFil_ref.h              
+del /Q /F TXB_WB_APP\appLocalization\locVelFil_ref_private.h      
+del /Q /F TXB_WB_APP\appLocalization\locVelFil_ref_types.h        
+del /Q /F TXB_WB_APP\appLocalization\locWmF.c              
+del /Q /F TXB_WB_APP\appLocalization\locWmF.h              
+del /Q /F TXB_WB_APP\appLocalization\locWmF_private.h      
+del /Q /F TXB_WB_APP\appLocalization\locWmF_types.h        
+del /Q /F TXB_WB_APP\appLocalization\locWmFus_ref.c              
+del /Q /F TXB_WB_APP\appLocalization\locWmFus_ref.h              
+del /Q /F TXB_WB_APP\appLocalization\locWmFus_ref_private.h      
+del /Q /F TXB_WB_APP\appLocalization\locWmFus_ref_types.h        
+del /Q /F TXB_WB_APP\appLocalization\locWmM.c              
+del /Q /F TXB_WB_APP\appLocalization\locWmM.h              
+del /Q /F TXB_WB_APP\appLocalization\locWmM_private.h      
+del /Q /F TXB_WB_APP\appLocalization\locWmM_types.h        
+del /Q /F TXB_WB_APP\appLocalization\locWmR.c              
+del /Q /F TXB_WB_APP\appLocalization\locWmR.h              
+del /Q /F TXB_WB_APP\appLocalization\locWmR_private.h      
+del /Q /F TXB_WB_APP\appLocalization\locWmR_types.h        
+
+del /Q /F TXB_WB_APP\appModeManager\mm_cal_defs.c              
+del /Q /F TXB_WB_APP\appModeManager\mm_context.a2l             
+del /Q /F TXB_WB_APP\appModeManager\mm_context.c               
+del /Q /F TXB_WB_APP\appModeManager\mm_context.h               
+del /Q /F TXB_WB_APP\appModeManager\mm_context_private.h       
+del /Q /F TXB_WB_APP\appModeManager\mm_context_trace.html      
+del /Q /F TXB_WB_APP\appModeManager\mm_context_types.h         
+del /Q /F TXB_WB_APP\appModeManager\mm_ref.a2l                 
+del /Q /F TXB_WB_APP\appModeManager\mm_ref.c                   
+del /Q /F TXB_WB_APP\appModeManager\mm_ref.h                   
+del /Q /F TXB_WB_APP\appModeManager\mm_ref_HaltFlag.c          
+del /Q /F TXB_WB_APP\appModeManager\mm_ref_HaltFlag.h          
+del /Q /F TXB_WB_APP\appModeManager\mm_ref_locDpvVelStatus.c   
+del /Q /F TXB_WB_APP\appModeManager\mm_ref_locDpvVelStatus.h   
+del /Q /F TXB_WB_APP\appModeManager\mm_ref_private.h           
+del /Q /F TXB_WB_APP\appModeManager\mm_ref_trace.html          
+del /Q /F TXB_WB_APP\appModeManager\mm_ref_types.h             
+del /Q /F TXB_WB_APP\appModeManager\mm_var_defs.c              
+
+del /Q /F TXB_WB_APP\appSafetyModule\sm_cal_defs.c              
+del /Q /F TXB_WB_APP\appSafetyModule\sm_context.a2l             
+del /Q /F TXB_WB_APP\appSafetyModule\sm_context.c               
+del /Q /F TXB_WB_APP\appSafetyModule\sm_context.h               
+del /Q /F TXB_WB_APP\appSafetyModule\sm_context_private.h       
+del /Q /F TXB_WB_APP\appSafetyModule\sm_context_types.h         
+del /Q /F TXB_WB_APP\appSafetyModule\sm_ref.a2l                 
+del /Q /F TXB_WB_APP\appSafetyModule\sm_ref.c                   
+del /Q /F TXB_WB_APP\appSafetyModule\sm_ref.h                   
+del /Q /F TXB_WB_APP\appSafetyModule\sm_ref_private.h           
+del /Q /F TXB_WB_APP\appSafetyModule\sm_ref_types.h             
+del /Q /F TXB_WB_APP\appSafetyModule\sm_var_defs.c              
+
+del /Q /F TXB_WB_APP\appSteeringControl\ca_cal_defs.c         
+del /Q /F TXB_WB_APP\appSteeringControl\ca_ref.a2l            
+del /Q /F TXB_WB_APP\appSteeringControl\ca_ref.c              
+del /Q /F TXB_WB_APP\appSteeringControl\ca_ref.h              
+del /Q /F TXB_WB_APP\appSteeringControl\ca_ref_private.h      
+del /Q /F TXB_WB_APP\appSteeringControl\ca_ref_types.h        
+del /Q /F TXB_WB_APP\appSteeringControl\ca_var_defs.c         
+del /Q /F TXB_WB_APP\appSteeringControl\dz_cal_defs.c         
+del /Q /F TXB_WB_APP\appSteeringControl\dz_ref.a2l            
+del /Q /F TXB_WB_APP\appSteeringControl\dz_ref.c              
+del /Q /F TXB_WB_APP\appSteeringControl\dz_ref.h              
+del /Q /F TXB_WB_APP\appSteeringControl\dz_ref_private.h      
+del /Q /F TXB_WB_APP\appSteeringControl\dz_ref_types.h        
+del /Q /F TXB_WB_APP\appSteeringControl\dz_var_defs.c         
+del /Q /F TXB_WB_APP\appSteeringControl\oa_cal_defs.c         
+del /Q /F TXB_WB_APP\appSteeringControl\oa_ref.a2l            
+del /Q /F TXB_WB_APP\appSteeringControl\oa_ref.c              
+del /Q /F TXB_WB_APP\appSteeringControl\oa_ref.h              
+del /Q /F TXB_WB_APP\appSteeringControl\oa_ref_private.h      
+del /Q /F TXB_WB_APP\appSteeringControl\oa_ref_types.h        
+del /Q /F TXB_WB_APP\appSteeringControl\oa_var_defs.c         
+del /Q /F TXB_WB_APP\appSteeringControl\steering_control_context.a2l            
+del /Q /F TXB_WB_APP\appSteeringControl\steering_control_context.c              
+del /Q /F TXB_WB_APP\appSteeringControl\steering_control_context.h              
+del /Q /F TXB_WB_APP\appSteeringControl\steering_control_context_private.h      
+del /Q /F TXB_WB_APP\appSteeringControl\steering_control_context_types.h        
+del /Q /F TXB_WB_APP\appSteeringControl\tv_cal_defs.c         
+del /Q /F TXB_WB_APP\appSteeringControl\tv_ref.a2l            
+del /Q /F TXB_WB_APP\appSteeringControl\tv_ref.c              
+del /Q /F TXB_WB_APP\appSteeringControl\tv_ref.h              
+del /Q /F TXB_WB_APP\appSteeringControl\tv_ref_private.h      
+del /Q /F TXB_WB_APP\appSteeringControl\tv_ref_types.h        
+del /Q /F TXB_WB_APP\appSteeringControl\tv_var_defs.c         
+del /Q /F TXB_WB_APP\appSteeringControl\yc_cal_defs.c         
+del /Q /F TXB_WB_APP\appSteeringControl\yc_ref.a2l            
+del /Q /F TXB_WB_APP\appSteeringControl\yc_ref.c              
+del /Q /F TXB_WB_APP\appSteeringControl\yc_ref.h              
+del /Q /F TXB_WB_APP\appSteeringControl\yc_ref_data.c         
+del /Q /F TXB_WB_APP\appSteeringControl\yc_ref_private.h      
+del /Q /F TXB_WB_APP\appSteeringControl\yc_ref_types.h        
+del /Q /F TXB_WB_APP\appSteeringControl\yc_var_defs.c         
+
+del /Q /F TXB_WB_APP\appSteeringwheelBreak\sb_cal_defs.c              
+del /Q /F TXB_WB_APP\appSteeringwheelBreak\sb_context.a2l             
+del /Q /F TXB_WB_APP\appSteeringwheelBreak\sb_context.c               
+del /Q /F TXB_WB_APP\appSteeringwheelBreak\sb_context.h               
+del /Q /F TXB_WB_APP\appSteeringwheelBreak\sb_context_private.h       
+del /Q /F TXB_WB_APP\appSteeringwheelBreak\sb_context_trace.html       
+del /Q /F TXB_WB_APP\appSteeringwheelBreak\sb_context_types.h         
+del /Q /F TXB_WB_APP\appSteeringwheelBreak\sb_ref.a2l                 
+del /Q /F TXB_WB_APP\appSteeringwheelBreak\sb_ref.c                   
+del /Q /F TXB_WB_APP\appSteeringwheelBreak\sb_ref.h                   
+del /Q /F TXB_WB_APP\appSteeringwheelBreak\sb_ref_private.h           
+del /Q /F TXB_WB_APP\appSteeringwheelBreak\sb_ref_trace.html          
+del /Q /F TXB_WB_APP\appSteeringwheelBreak\sb_ref_types.h             
+del /Q /F TXB_WB_APP\appSteeringwheelBreak\sb_var_defs.c              
+
+del /Q /F TXB_WB_APP\appYawRateFilter\yrf_cal_defs.c              
+del /Q /F TXB_WB_APP\appYawRateFilter\yrf_context.a2l             
+del /Q /F TXB_WB_APP\appYawRateFilter\yrf_context.c               
+del /Q /F TXB_WB_APP\appYawRateFilter\yrf_context.h               
+del /Q /F TXB_WB_APP\appYawRateFilter\yrf_context_private.h       
+del /Q /F TXB_WB_APP\appYawRateFilter\yrf_context_trace.html       
+del /Q /F TXB_WB_APP\appYawRateFilter\yrf_context_types.h        
+del /Q /F TXB_WB_APP\appYawRateFilter\yrf_ref.a2l                 
+del /Q /F TXB_WB_APP\appYawRateFilter\yrf_ref.c                   
+del /Q /F TXB_WB_APP\appYawRateFilter\yrf_ref.h                   
+del /Q /F TXB_WB_APP\appYawRateFilter\yrf_ref_private.h           
+del /Q /F TXB_WB_APP\appYawRateFilter\yrf_ref_trace.html          
+del /Q /F TXB_WB_APP\appYawRateFilter\yrf_ref_types.h             
+del /Q /F TXB_WB_APP\appYawRateFilter\yrf_var_defs.c              
+
+del /Q /F ACS\acsTr\acsLocTrF\loctf_ref.a2l       
+del /Q /F ACS\acsTr\acsLocTrF\loctf_ref.c         
+del /Q /F ACS\acsTr\acsLocTrF\loctf_ref.h         
+del /Q /F ACS\acsTr\acsLocTrF\loctf_ref_private.h 
+del /Q /F ACS\acsTr\acsLocTrF\loctf_ref_types.h      
+del /Q /F ACS\acsTr\acsLocTrF\loctf_var_defs.c   
+del /Q /F ACS\acsTr\acsLocTrF\locTrFast_context.a2l     
+del /Q /F ACS\acsTr\acsLocTrF\locTrFast_context.c     
+del /Q /F ACS\acsTr\acsLocTrF\locTrFast_context.h     
+del /Q /F ACS\acsTr\acsLocTrF\locTrFast_context_private.h
+del /Q /F ACS\acsTr\acsLocTrF\locTrFast_context_types.h  
+
+del /Q /F ACS\acsTr\acsLocTrS\locTrSlow_context.a2l      
+del /Q /F ACS\acsTr\acsLocTrS\locTrSlow_context.c        
+del /Q /F ACS\acsTr\acsLocTrS\locTrSlow_context.h        
+del /Q /F ACS\acsTr\acsLocTrS\locTrSlow_context_private.h
+del /Q /F ACS\acsTr\acsLocTrS\locTrSlow_context_types.h  
+del /Q /F ACS\acsTr\acsLocTrS\locts_cal_defs.c           
+del /Q /F ACS\acsTr\acsLocTrS\locts_ref.a2l              
+del /Q /F ACS\acsTr\acsLocTrS\locts_ref.c                
+del /Q /F ACS\acsTr\acsLocTrS\locts_ref.h                
+del /Q /F ACS\acsTr\acsLocTrS\locts_ref_private.h        
+del /Q /F ACS\acsTr\acsLocTrS\locts_ref_types.h          
+del /Q /F ACS\acsTr\acsLocTrS\locts_var_defs.c           
+
+del /Q /F ACS\acsTr\acsMoTrF\motf_ref.a2l         	
+del /Q /F ACS\acsTr\acsMoTrF\motf_ref.c           	
+del /Q /F ACS\acsTr\acsMoTrF\motf_ref.h           	
+del /Q /F ACS\acsTr\acsMoTrF\motf_ref_private.h   	
+del /Q /F ACS\acsTr\acsMoTrF\motf_ref_types.h        
+del /Q /F ACS\acsTr\acsMoTrF\motf_var_defs.c     	
+del /Q /F ACS\acsTr\acsMoTrF\moTrFast_context.a2l      
+del /Q /F ACS\acsTr\acsMoTrF\moTrFast_context.c       
+del /Q /F ACS\acsTr\acsMoTrF\moTrFast_context.h       
+del /Q /F ACS\acsTr\acsMoTrF\moTrFast_context_private.h 
+del /Q /F ACS\acsTr\acsMoTrF\moTrFast_context_types.h   
+
+del /Q /F ACS\acsTr\acsMoTrS\moTrSlow_context.a2l      
+del /Q /F ACS\acsTr\acsMoTrS\moTrSlow_context.c        
+del /Q /F ACS\acsTr\acsMoTrS\moTrSlow_context.h        
+del /Q /F ACS\acsTr\acsMoTrS\moTrSlow_context_private.h
+del /Q /F ACS\acsTr\acsMoTrS\moTrSlow_context_types.h  
+del /Q /F ACS\acsTr\acsMoTrS\mots_ref.a2l              
+del /Q /F ACS\acsTr\acsMoTrS\mots_ref.c                
+del /Q /F ACS\acsTr\acsMoTrS\mots_ref.h                
+del /Q /F ACS\acsTr\acsMoTrS\mots_ref_private.h        
+del /Q /F ACS\acsTr\acsMoTrS\mots_ref_types.h          
+del /Q /F ACS\acsTr\acsMoTrS\mots_var_defs.c          
+
+cd %cur_loc%
+
+pause

@@ -1,0 +1,17 @@
+#  ignoreSL.bat is a shell script allowing to add to .gitignore all the 
+#  symbolic links and symbolic linked directories.
+#  All the new files are checked and if symbolic links, then they are added to .gitignore.
+# 
+
+# @author      @$Author$
+# @date	@$Date$
+# @version	@$Revision$
+#
+# $Id$
+#
+#
+
+for f in $(git status --porcelain | grep '^??' | sed 's/^?? //'); do
+    test -L "$f" && echo $f >> .gitignore; # add symlinks
+    test -d "$f" && echo $f\* >> .gitignore; # add new directories as well
+done

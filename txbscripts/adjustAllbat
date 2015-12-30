@@ -1,0 +1,36 @@
+rem  adjustAll.bat is a batch file that will adjust the expansion of all the IDs.
+rem  It is necessary to run it after having checkout a GIT repository.
+rem  It can take a parameter being the path to the repository.
+rem  If there is no parameter, then the assumption is that the current repository 
+rem  is the relevant one.
+
+rem @author      @$Author$
+rem @date	@$Date$
+rem @version	@$Revision$
+rem
+rem $Id$
+rem
+rem @file   @$File$
+
+echo on
+set title=%~n0
+TITLE %title%
+
+set cur_loc=%cd%
+
+set rep=%1%
+set par=%cur_loc%
+
+if NOT "%rep%"=="" (
+set par=%rep%
+)
+
+cd %rep%
+
+rem "C:\Program Files\GIT\bin\git.exe" checkout -f HEAD *.c *.h 
+"C:\Program Files\GIT\bin\sh.exe" --login -i adjustAll.sh %par%
+rem dir /S /B *.c *.h *.H | git checkout -f HEAD
+
+cd %cur_loc%
+
+exit /B 0

@@ -1,0 +1,25 @@
+rem @ECHO OFF
+set TXB_HOME=%cd%
+echo %TXB_HOME%
+set title=%~n0
+TITLE %title%
+
+if exist R:\. subst /d R: 
+
+if exist S:\. subst /d S: 
+
+
+IF "%~1" == "" (
+echo %cd% 
+subst R: %cd%\txb_wb_integration
+subst S: %cd%\txb_tools
+)ELSE (
+echo %1
+net use R: \\%1\git\txb_wb_integration
+
+net use S: \\%1\git\txb_tools
+)
+pause
+
+
+
