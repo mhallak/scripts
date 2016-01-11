@@ -38,7 +38,7 @@ do
   echo "Execute scenario $dir"
    roslaunch SRVSS --pid=/tmp/srvsspid runScenario_robil2.launch scen:=$dir &
   sleep 300
-  rostopic echo /srvss/grades > $dir/grades.txt &
+  rostopic echo -n 1 /srvss/grades  > $dir/grades.txt &
   tpid=$!
   sleep 15
   cat $dir/grades.txt >> superGrades.txt
