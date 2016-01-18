@@ -9,7 +9,7 @@ fi
 MODEL_DIR=$1
 cd $MODEL_DIR
 
-DIR_LIST="`ls -d sampl_*/`"
+DIR_LIST="`ls -v sampl_*/`"
 echo DIR_LIST: ${DIR_LIST}
 
 for dir in ${DIR_LIST}
