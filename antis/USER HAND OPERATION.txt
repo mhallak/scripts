@@ -1,0 +1,56 @@
+--------------------------------------------------
+roslaunch C25_GlobalPosition C25.launch
+roslaunch C21_VisionAndLidar C21.launch
+rosrun C23_ObjectRecognition C23 /multisense_sl/camera/left/image_color /multisense_sl/cama/right/image_color /multisense_sl/camera/points2
+rosrun C0_RobilTask task_tester searchObject time=-1 args=target=FirehoseGrip
+-------------------------------------------------------
+
+roslaunch C66_Grasp C66_Grasp_no_dFind.launch
+roslaunch C45_PostureControl C45_PostureControl.launch
+
+START POSECONTROLLER
+-----------------------------------------
+rosservice call /PoseController/start "{}" 
+-----------------------------------------
+
+
+MOVE NECK:
+-----------------------------------------
+rosservice call /PoseController/back_lbz_neck_ay "back_lbz: 0.0 neck_ay: 0.7" 
+-----------------------------------------
+-------------------------------------------
+rosrun C66_Grasp client 
+----------------------------------------------------------
+at this stage the right hand should move to position0 then calling to perception and asking to press 'y' if the hand above the hose 
+
+at this stage the operator can use the following services to allign the hand above the hose:
+
+to move to the right hand use:
+-------------------------------------------------------
+rosservice call /rPath_srv "PositionDestination: + TAB
+-----------------------------------------------------
+
+a posible option can be:
+---------------------------------------------------------
+rosservice call /rPath_srv "PositionDestination:
+  x: 0.55
+  y: -0.071
+  z: 0.42
+AngleDestination:
+  x: -3.14
+  y: 0.0
+  z: 1.442
+time: 2.0
+points: 100.0" 
+----------------------------------------------------------
+
+TO CONTINUE PRESS 'y' then 'Enter' on the terminal where 
+"roslaunch C66_Grasp C66_Grasp_no_dFind.launch" is running
+
+the hand should go down and continue the grasp sequence
+
+manualy closing the hand type:
+-------------------------------------------------------------
+rostopic pub /sandia_hands/r_hand/simple_grasp sandia_hand_msgs/SimpleGrasp "name: 'cylindrical' 
+closed_amount: 100.0"
+-------------------------------------------------------------

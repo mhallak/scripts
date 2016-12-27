@@ -1,0 +1,65 @@
+RVIZ:
+Use: roslaunch atlas_utils atlas_position_controllers.launch
+Then: rosrun rviz rviz
+Actuate the laser:
+***rostopic pub /multisense_sl/set_spindle_speed std_msgs/Float64 '{ data: 6.0 } '
+**********************************
+rosservice call /executer/whoIsRunning "{}"
+**************************************
+rostopic echo /atlas/atlas_sim_interface_state/current_behavior
+*****************************************************************
+rostopic pub /atlas/mode std_msgs/String "data: 'nominal'"
+**************************************************************
+Flood with messages:
+rostopic echo /multisense_sl/camera/left/image_raw
+*****************************************************************************************************************************************
+DRCSIM 2.0:
+Set the robot in driver seat of DRC verhicle:
+rostopic pub --once /drc_world/robot_enter_car geometry_msgs/Pose '{}'
+********************************************************************************************************
+***********************************************************************************************
+DRCSIM 2.0
+roslaunch atlas_utils atlas_sandia_hands.launch
+
+Grasping:
+rosservice call /sandia_hands/l_hand/simple_grasp ' { grasp: { name: "spherical", closed_amount: 0.8 } }'
+rosservice call /sandia_hands/r_hand/simple_grasp ' { grasp: { name: "spherical", closed_amount: 0.8 } }'
+
+Relaxing:
+rosservice call /sandia_hands/l_hand/simple_grasp ' { grasp: { name: "spherical", closed_amount: 0.0 } }'
+***********************************************************************************************
+Sort of ros ping:
+gztopic echo /gazebo/default/world_stats
+***********************************************************************************************
+DRCSIM 1.3
+Teleop:
+***rosrun pr2_teleop teleop_pr2_keyboard cmd_vel:=atlas/cmd_vel
+Make the robot drive counter-clockwise in a circle:
+***rostopic pub atlas/cmd_vel geometry_msgs/Twist '{ linear: { x: 0.5, y: 0.0, z: 0.0 }, angular: { x: 0.0, y: 0.0, z: 0.5 } }'
+Check topic:
+***rostopic echo atlas/cmd_vel
+Stop the robot:
+***rostopic pub atlas/cmd_vel geometry_msgs/Twist '{ linear: { x: 0.0, y: 0.0, z: 0.0 }, angular: { x: 0.0, y: 0.0, z: 0.0 } }'
+
+Golf Cart:
+Use: roslaunch atlas_utils atlas_golf_cart_fire_hose.launch
+To place the Atlas robot outside the driver's side door:
+***rostopic pub --once /drc_world/robot_exit_car geometry_msgs/Pose '{position: {x: 0, y: 0, z: 0}, orientation: {w: 1, x: 0, y: 0, z: 0}}'
+To place the robot on the passenger's side of the golf cart facing the vehicle:
+***rostopic pub --once /drc_world/robot_exit_car geometry_msgs/Pose '{position: {x: 0.5, y: -3.5, z: 0}, orientation: {w: 0.707, x: 0, y: 0, z: 0.707}}'
+Place Atlas in the driver's seat with the robot_enter_car topic:
+***rostopic pub --once /drc_world/robot_enter_car geometry_msgs/Pose '{position: {x: 0, y: 0, z: 0}, orientation: {w: 1, x: 0, y: 0, z: 0}}'
+Place Atlas in the passenger's seat by specifying a pose offset:
+***rostopic pub --once /drc_world/robot_enter_car geometry_msgs/Pose '{position: {x: 0, y: -1, z: 0}, orientation: {w: 1, x: 0, y: 0, z: 0}}'
+Disengage the hand brake:
+***rostopic pub --once /golf_cart/hand_brake/cmd std_msgs/Float64 '{ data : 0 }'
+Turn the steering wheel:
+***rostopic pub --once /golf_cart/hand_wheel/cmd std_msgs/Float64 '{ data : 3.14 }'
+Press the gas pedal:
+***rostopic pub --once /golf_cart/gas_pedal/cmd std_msgs/Float64 '{ data : 1 }'
+
+
+Whole Body Trajectory:
+***roscd trajectory_control_tutorial;python traj_yaml.py Traj_data.yaml step_and_fall
+
+

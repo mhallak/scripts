@@ -1,0 +1,166 @@
+Task Tester:
+rosrun C0_RobilTask task_tester PathPlanningFocus  time=-1 args=x=0,y=12
+
+gzlog stop
+
+scp -o StrictHostKeyChecking=no -i key-fc1.pem ubuntu@10.0.0.52:./c22test c22test
+
+***************************
+
+Services:
+rosrun C21_VisionAndLidar test5
+
+rosservice call /C21/C23 "sample:  x1: 389                     
+  y1: 430
+  x2: 444
+  y2: 483" 
+
+*****************************************
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 16126D3A3E5C1192
+**************************************
+apt-cache showpkg drcsim | more
+===================================================================
+Cloudsim: trio
+VPN:
+cd trio*/router*
+ sudo ./start_vpn.bash
+killVPN:
+sudo killall openvpn
+
+SSH Field:
+cd trio*/field*
+./robot_ssh.bash
+
+ROS Local:
+cd trio*/rout*
+. ros.bash
+
+SSH simulator:
+cd trio*/simulator*
+. ./simulator_ssh.bash
+
+=============================================================
+Cloudsim: one computer
+VPN: 
+cd cloudsim_start_tutorial
+cd simulator*
+change ip in openvpn3.config
+
+sudo openvpn openvpn3.config
+
+SSH Machine:
+cd cloudsim_start_tutorial
+cd simulator*
+change ip in ssh3.sh
+. ./ssh3.sh
+
+ROS Local
+cd cloudsim_start_tutorial
+cd simulator*
+. ./ros.sh
+*************************************************************
+python version:
+>>>python -V
+**************************************************************************************************************************
+*************************************************************
+
+See all aliases:
+git config --get-regexp alias
+*************************************************************
+All the specific configuration
+
+git config -l
+*******************************************************
+Diff 2 commits of file main.c with git:
+
+git diff HEAD~2 main.c
+git diff HEAD^^ HEAD main.c
+
+you can simply pass the 2 commits to git diff like :
+> git diff 0da94be..59ff30c > my.patch
+*****************************
+tags:
+git tag -m"Tag version 1.0" V1.0 3ede462
+git push --tags
+************************************************************************
+.gitignore:
+=============================================================
+$ cat .gitignore
+*.[oa]
+*~
+Here is another example .gitignore file:
+
+# a comment - this is ignored
+*.a       # no .a files
+!lib.a    # but do track lib.a, even though you're ignoring .a files above
+/TODO     # only ignore the root TODO file, not subdir/TODO
+build/    # ignore all files in the build/ directory
+doc/*.txt # ignore doc/notes.txt, but not doc/server/arch.txt
+
+*******************************************************************
+To see what you’ve changed but not yet staged
+$ git diff
+
+To see what you’ve staged that will go into your next commit
+$ git diff --staged
+*******************************************************************
+git specific revision"
+git push --tags
+git checkout <revision hash>
+***********************************************************************
+Don't track:
+$ git rm --cached readme.txtq
+************************************************
+Rename a file in Git, you can run something like
+
+$ git mv file_from file_to
+****************************************************************************
+git status -uno
+****************************************************************************
+****************************************************************************
+****************************************************************************
+ROS
+*****************************************************************************
+***************************************************************************
+rostopic echo /atlas_controller/state
+rostopic type  [topic] | rosmsg show
+
+rosservice type [service]| rossrv show
+rosservice type spawn| rossrv show
+
+commands rosservice and rosparam relate to the running nodes
+
+
+//URDF
+rosmake urdf_parser
+rosrun urdf_parser check_urdf my_urdf.xml
+rosrun urdf_parser urdf_to_graphiz my_urdf.xml
+evince test_robot.pdf
+************************************************************
+
+
+/////
+What I did:
+
+In order to recover a deleted/modified file:
+git checkout <name of file>
+
+In order to delete files:
+1. Delete in the file system
+2. Delete in the repository: git rm ....
+
+##################################################
+UNIX
+sudo find / -xdev -name libOgreRTShaderSystem.so.1.7.3
+sudo locate libOgreRTShaderSystem.so.1.7.3
+    
+To print a process tree:           ps -ejH
+To get info about threads:          ps -eLf
+
+#########################################################
+RVIS Tutorial:
+
+Actuate the laser:
+rostopic pub /multisense_sl/set_spindle_speed std_msgs/Float64 '{ data: 6.0 } '
+
+
