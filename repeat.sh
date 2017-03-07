@@ -9,12 +9,12 @@ fi
 MODEL_DIR=$1
 cd $MODEL_DIR
 
-DIR_LIST="`ls -v sampl_*/`"
+DIR_LIST="`ls -v `"
 echo DIR_LIST: ${DIR_LIST}
 
 for dir in ${DIR_LIST}
 do
-  echo "Copying with $dir"
+  echo "Copying $dir"
    mkdir ../$dir
    err_code=$?
    if [ $err_code -ne 0 ]
@@ -36,7 +36,7 @@ echo "Starting executing scenarios"
 for dir in ${DIR_LIST}
 do
   echo "Execute scenario $dir"
-   roslaunch SRVSS --pid=/tmp/srvsspid runScenario_robil2.launch scen:=$dir &
+   roslaunch smartest --pid=/tmp/srvsspid runScenario_robil2.launch scen:=$dir  1>&2  > $dir/log.txt &
   sleep 300
   rostopic echo -n 1 /srvss/grades  > $dir/grades.txt &
   tpid=$!
