@@ -1,8 +1,8 @@
 #!/bin/bash
 echo 1 | sudo -S nvpmodel -q #--verbose
-echo 1 | sudo -S nvpmodel -m 0
-echo 1 | sudo hwclock --systohc
-echo 1 | sudo jetson_clocks
+# echo 1 | sudo -S nvpmodel -m 0
+# echo 1 | sudo hwclock --systohc
+# echo 1 | sudo jetson_clocks
 
 echo "Load CPU"
 cd ~/git/CPULoadGenerator
