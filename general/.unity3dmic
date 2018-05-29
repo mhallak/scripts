@@ -1,0 +1,41 @@
+#Allow core dump
+ulimit -c unlimited
+#export PATH="/home/robil/giteye:/home/robil/scripts:/home/robil/scripts/python:/usr/local/bin:/usr/share:$PATH"
+export PATH="/opt/Unity/Editor/:/opt/Unity/Editor/Data/Mono/bin:/home/robil/giteye:/home/robil/scripts:/home/robil/scripts/python:/usr/local/bin:/usr/share:$PATH"
+
+export EDITOR='vi'
+
+export JAVA_HOME=$(readlink -f /usr/bin/javac | sed "s:bin/javac::")
+export ROBIL2=/home/robil/robil2
+export SMART=/home/robil/srvss
+export ISLANDS=/home/robil/gazebo_parallel
+export GZ8=/home/robil/gazebo8
+export IAM=/home/robil/iai-gazebo-models
+export GZROOT=/home/robil/gazebo8
+source ~/.git-completion.bash
+#source $ROBIL2/devel/setup.bash
+source /opt/ros/kinetic/setup.bash
+
+export ROS_IP=`hostname -I`
+
+export GIT_MERGE_AUTOEDIT=no
+export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+#source ~/catkin_ws/devel/setup.bash
+export NO_AT_BRIDGE=1
+export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH
+#source /home/robil/iai-gazebo-models/devel/setup.bash
+alias cdi='cd $GZROOT'
+source $GZROOT/devel_isolated/setup.bash
+echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+echo ""
+echo "     YOU ARE IN THE UNITY3D ENVIRONMENT             "
+echo "   Reset env with alias resenv                             "
+echo ""
+echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+alias ou='echo GZROOT'
+alias iam='source $IAM/devel/setup.bash'
+export GAZEBO_MODEL_PATH=/home/robil/iai-gazebo-models/src/velodyne/models
+export GAZEBO_PLUGIN_PATH=/home/robil/gazebo8/devel_isolated/gazebo/lib/gazebo-8/plugins:/home/robil/iai-gazebo-models/devel/lib
+export RUNGAZ=$(which gazebo)
+export CLANG=/opt/clang
+source ~/.cudaenv
