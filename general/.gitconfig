@@ -8,8 +8,8 @@
 	visual = gitk
         churn = !git log --all -M -C --name-only --format='format:' "$@" | sort | grep -v '^$' | uniq -c | sort | awk 'BEGIN {print "count,file"} {print $1 "," $2}'
 [user]
-	name = mhallak	
-	email = mhallak@apollo
+	name = robil	
+	email = robil@cassini
 [core]
 	editor = vi
 	whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
@@ -33,5 +33,3 @@
     	untracked = cyan
 [http]
         sslVerify = false
-[gui]
-	recentrepo = /home/robil/cmake_smartest/smartest

@@ -1,0 +1,26 @@
+#Allow core dump
+ulimit -c unlimited
+export PATH="/home/robil/scripts:/home/robil/scripts/python:/usr/local/bin:/usr/share:$PATH"
+
+export EDITOR='vi'
+
+export JAVA_HOME=$(readlink -f /usr/bin/javac | sed "s:bin/javac::")
+export ROBIL2=/home/robil/robil2
+export SMART=/home/robil/srvss
+alias a=alias
+alias h=history
+alias j=jobs
+alias d=date
+alias rm='rm -i'
+alias ver='lsb_release -a'
+alias cdw='cd $ROBIL2'
+alias cds='cd $ROBIL2/src'
+alias cdg='cd $ROBIL2/src/Framework/ocu/scripts'
+alias cdl='cd $HOME/.ros/log'
+source ~/.git-completion.bash
+#source $ROBIL2/devel/setup.bash
+#source /opt/ros/kinetic/setup.bash
+
+export ROS_IP=`hostname -I`
+
+export GIT_MERGE_AUTOEDIT=no
