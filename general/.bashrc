@@ -121,4 +121,4 @@ fi
 #source /home/robil/.unity3dmic
 #source /home/robil/.gazebo8
 #source /home/robil/.islands
-
+source ~/.bash_profile
