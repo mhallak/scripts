@@ -12,4 +12,5 @@ source /opt/ros/melodic/setup.bash
 #export ROS_PYTHON_VERSION=3
 export PATH="/home/sload/scripts/shellscripts:$PATH"
 #sl
+alias charm="bash -i -c \"/home/sload/.local/share/JetBrains/Toolbox/apps/PyCharm-C/ch-0/193.6494.30/bin/pycharm.sh\" %f"
 fortune
