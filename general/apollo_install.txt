@@ -1,0 +1,74 @@
+sudo apt install terminator
+sudo add-apt-repository ppa:/yannubuntu/boot-repair
+sudo apt-get update
+sudo apt-get install -y boot-repair && boot-repair
+sudo apt install nvidia-driver-440 
+reboot
+sudo apt install apt-transport-https curl
+curl -s https://brave-browser-apt-release.s3.brave.com/brave-core.asc | sudo apt-key --keyring /etc/apt/trusted.gpg.d/brave-browser-release.gpg add -
+echo "deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main" | sudo tee /etc/apt/sources.list.d/brave-browser-release.list
+sudo apt update
+sudo apt install brave-browser
+sudo dpkg -i google-chrome-stable_current_amd64.deb 
+reboot
+sudo apt-get install -y  v4l-utils
+sudo apt install -y v4l-utils
+sudo apt install -y git-all
+sudo apt install -y sl fortune mplayer mencoder mpv vlc meld
+sudo apt-get install -y default-jre default-jdk
+sudo apt-get install -y libgstrtspserver-1.0 libgstreamer1.0-dev
+sudo add-apt-repository universe
+sudo add-apt-repository multiverse
+sudo apt update
+sudo apt-get install -y  openssh-server
+sudo apt-get install -y openssh-server
+sudo apt install -y  mesa-utils tree 
+sudo apt install -y mesa-utils tree 
+ sudo apt install mesa-utils tree 
+sudo apt install -y  lbzip2 htop slurm tcptrack
+sudo apt install lbzip2 htop slurm tcptrack
+sudo apt install -y synaptic aptitude curl gnupg2 lsb-release
+sudo apt install -y  python3-argcomplete
+sudo apt install python3-argcomplete
+sudo apt install  -y python-pip python3-pip pylint3 pylint
+sudo apt install python-pip python3-pip pylint3 pylint
+sudo apt install -y  vim 
+sudo apt install -y vim v4l2loopback-dkms v4l2loopback-utils ffmpeg net-tools
+sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
+sudo apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
+curl -sSL 'http://keyserver.ubuntu.com/pks/lookup?op=get&search=0xC1CF6E31E6BADE8868B172B4F42ED6FBAB17C654' | sudo apt-key add -
+sudo apt update
+sudo apt install ros-melodic-desktop-full
+source /opt/ros/melodic/setup.bash
+sudo apt install python-rosdep python-rosinstall python-rosinstall-generator python-wstool build-essential
+sudo apt install python-rosdep
+sudo rosdep init
+rosdep update
+sudo apt install ros-melodic-move-base ros-melodic-move-base-msgs 
+sudo apt install ros-melodic-driver-base  ros-melodic-ackermann-msgs
+sudo apt install ros-melodic-driver-base ros-melodic-ackermann-msgs 
+sudo apt install ros-melodic-tf2 ros-melodic-tf2-web-republisher
+sudo apt install ros-melodic-rosbridge-server
+sudo apt install -y ros-melodic-joy
+sudo apt install python3-catkin-pkg-modules python3-rospkg-modules python3-empy
+pip3 install scp numpy
+sudo apt install sshpass
+sudo apt install blender
+sudo apt-get install python-catkin-tools
+sudo apt install libpcap0.8-dev
+sudo apt install ros-melodic-qt-ros
+sudo apt install ros-melodic-fc-catkin
+sudo apt install ros-melodic-octomap-msgs
+sudo snap install pycharm-community --classic
+Download UnityHub and install Unity 2019.3.15f1
+Download and install visual code:
+sudo dpkg -i code_1.46.1-1592428892_amd64.deb 
+sudo apt-get install gstreamer1.0-plugins-ugly
+sudo apt-get install libx264-dev
+sudo apt install gstreamer1.0-libav
+With Ubuntu Software application, install Filezilla
+pip3 install stable-baselines[mpi]
+pip3 install stable-baselines[mpi] --upgrade
+pip3 install tensorflow==1.14   (CPU)
+pip3 install keras==2.3.1
+
