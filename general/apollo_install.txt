@@ -87,3 +87,22 @@ sudo apt install ros-eloquent-ros1-bridge
 sudo apt install ros-eloquent-rmw-opensplice-cpp
 sudo apt install ros-eloquent-rmw-connext-cpp
 
+px4-ros2
+pip3 install --user pyros-genmsg
+pip3 install --user packaging
+fastrtpsgen:
+	install gradle https://gradle.org/install/
+		curl -s "https://get.sdkman.io" | bash ==>error - didn't install sdkman https://sdkman.io/install
+	sudo aptitude install zip
+	install manually in /opt/gradle following https://gradle.org/install/
+	Checkout Fast-DDS-Gen GIT Tag v1.0.4 before change of script name
+	Follow: https://fast-dds.docs.eprosima.com/en/latest/installation/sources/sources_linux.html#fastddsgen-sl
+
+#For pypubsub
+rosdep install -i --from-path src --rosdistro eloquent -y installed: 
+	ros-eloquent-launch-testing-ros
+
+sudo apt install ros-eloquent-turtlesim
+sudo apt install ros-eloquent-launch*
+
+        
