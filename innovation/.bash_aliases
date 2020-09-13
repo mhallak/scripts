@@ -8,20 +8,16 @@ alias path='(IFS=:;ls -1d $PATH |  nl)'
 
 #Allow core dump
 ulimit -c unlimited
-#export PATH="/home/robil/giteye:/home/robil/scripts:/home/robil/scripts/python:/usr/local/bin:/usr/share:$PATH"
-#export PATH="/opt/Unity/Editor/:/opt/Unity/Editor/Data/Mono/bin:/home/robil/scripts:/home/robil/scripts/python:/usr/local/bin:/usr/share:$PATH"
-export PATH="/home/robil/scripts/shellscripts:/home/robil/scripts/python:$PATH"
+export PATH="/home/xview/scripts/shellscripts:/home/xview/scripts/python:$PATH"
 
 export EDITOR='vi'
 
 export JAVA_HOME=$(readlink -f /usr/bin/javac | sed "s:bin/javac::")
-export ROBILX=/home/robil/git/ws/src/robil3
 
 source ~/.git-completion.bash
-#source $ROBILX/devel/setup.bash
 #source /opt/ros/melodic/setup.bash
-#source /home/robil/git/ws/devel/setup.bash
-alias r1="source /home/robil/git/ws/devel/setup.bash;PS1='<ros1>$PS1'"
+#source /home/xview/git/ws/devel/setup.bash
+alias r1="source /home/xview/git/ws/devel/setup.bash;PS1='<ros1>$PS1'"
 alias resenv="source /etc/environment;source /etc/profile;source /etc/profile.d/*;source ~/.bashrc"
 alias r2="source /opt/ros/eloquent/setup.bash;PS1='<ros2>$PS1'"
 alias br="source $HOME/scripts/shellscripts/ros1ros2bridge.sh"

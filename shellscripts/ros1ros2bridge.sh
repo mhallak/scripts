@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source /home/robil/git/ws/devel/setup.bash
+source $HOME/git/ws/devel/setup.bash
 roscore&
 source /opt/ros/eloquent/setup.bash
 
