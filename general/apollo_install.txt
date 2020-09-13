@@ -42,7 +42,6 @@ sudo apt install python-rosdep
 sudo rosdep init
 rosdep update
 sudo apt install ros-melodic-move-base ros-melodic-move-base-msgs 
-sudo apt install ros-melodic-driver-base  ros-melodic-ackermann-msgs
 sudo apt install ros-melodic-driver-base ros-melodic-ackermann-msgs 
 sudo apt install ros-melodic-tf2 ros-melodic-tf2-web-republisher
 sudo apt install ros-melodic-rosbridge-server
@@ -54,7 +53,7 @@ sudo apt install blender
 sudo apt-get install python-catkin-tools
 sudo apt install libpcap0.8-dev
 sudo apt install ros-melodic-qt-ros
-sudo apt install ros-melodic-fc-catkin
+sudo apt install ros-melodic-fcl-catkin
 sudo apt install ros-melodic-octomap-msgs
 sudo snap install pycharm-community --classic
 Download UnityHub and install Unity 2019.3.15f1
@@ -104,5 +103,20 @@ rosdep install -i --from-path src --rosdistro eloquent -y installed:
 
 sudo apt install ros-eloquent-turtlesim
 sudo apt install ros-eloquent-launch*
+
+pip install python-statemachine
+sudo apt-get install brasero
+
+# For .net https://docs.microsoft.com/en-us/dotnet/core/install/linux-ubuntu#1804-
+wget https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+sudo dpkg -i packages-microsoft-prod.deb
+sudo apt-get update; \
+  sudo apt-get install -y apt-transport-https && \
+  sudo apt-get update && \
+  sudo apt-get install -y dotnet-sdk-3.1
+
+pip install roslibpy
+pip install pysimplegui
+pip3 install pysimplegui
 
         
