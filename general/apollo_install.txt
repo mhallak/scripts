@@ -119,4 +119,13 @@ pip install roslibpy
 pip install pysimplegui
 pip3 install pysimplegui
 
-        
+sudo apt-get install graphviz
+sudo apt-get install gstreamer1.0-plugins-bad
+
+sudo apt-get install ros-$ROS_DISTRO-mavros ros-$ROS_DISTRO-mavros-extras
+wget https://raw.githubusercontent.com/mavlink/mavros/master/mavros/scripts/install_geographiclib_datasets.sh
+chmod a+x install_geographiclib_datasets.sh 
+sudo ./install_geographiclib_datasets.sh
+sudo usermod -a -G dialout $USER
+sudo apt install ros-melodic-diagnostics
+sudo apt install putty
