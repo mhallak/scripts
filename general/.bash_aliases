@@ -24,6 +24,8 @@ source ~/.git-completion.bash
 alias mel="source /opt/ros/melodic/setup.bash"
 alias elq="source /opt/ros/eloquent/setup.bash"
 alias rfr="source install/setup.bash"
+alias cdh="cd $HOME/git/ros2ws"
+alias cd1="cd $HOME/git/ws"
 #source /home/robil/git/ws/devel/setup.bash
 #rosdep install -i --from-path src --rosdistro eloquent -y
 alias r1="source /home/robil/git/ws/devel/setup.bash;PS1='<ros1>$PS1'"
@@ -40,7 +42,7 @@ export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH
 
 export RUNGAZ=$(which gazebo)
 export CLANG=/opt/clang
-
+export ROS_DOMAIN_ID=1
 #export ROS_PYTHON_VERSION=3
 #sl
 alias charm="bash -i -c \"/snap/pycharm-community/current/bin/pycharm.sh\" %f"
