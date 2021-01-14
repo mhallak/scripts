@@ -1,0 +1,9 @@
+sudo su
+vi /etc/rc.local
+==>start with #!/bin/sh -e
+==>or start with #!/bin/bash
+==>exit with exit 0
+chmod a+x /etc/rc.local
+systemctl restart rc-local
+systemctl status rc-local or rc.local
+
