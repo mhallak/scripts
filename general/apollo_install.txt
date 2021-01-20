@@ -187,6 +187,21 @@ Sanity:
     docker run hello-world
 sudo usermod -aG docker ${USER}
 
+#Install NVIDIA docker
+distribution=$(. /etc/os-release;echo $ID$VERSION_ID) \
+   && curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add - \
+   && curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
+    Optional: experimental
+     curl -s -L https://nvidia.github.io/nvidia-container-runtime/experimental/$distribution/nvidia-container-runtime.list | sudo tee /etc/apt/sources.list.d/nvidia-container-runtime.list
+sudo apt-get update
+sudo apt-get install -y nvidia-docker2
+sudo systemctl restart docker
+    Test it:
+	sudo docker run --rm --gpus all nvidia/cuda:11.0-base nvidia-smi
+    ==> driver too old
+	sudo docker run --rm --gpus all nvidia/cuda:10.0-base nvidia-smi
+    ==> ok!
+
 
 
 
