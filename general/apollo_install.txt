@@ -202,7 +202,11 @@ sudo systemctl restart docker
 	sudo docker run --rm --gpus all nvidia/cuda:10.0-base nvidia-smi
     ==> ok!
 
-
+Loco:
+======
+pip install geographiclib
+git clone https://github.com/danielsnider/gps_goal.git
+sudo apt install ros-melodic-navigation
 
 
 
