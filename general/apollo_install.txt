@@ -207,6 +207,6 @@ Loco:
 pip install geographiclib
 git clone https://github.com/danielsnider/gps_goal.git
 sudo apt install ros-melodic-navigation
-
+sudo apt install ros-melodic-gps-common
 
 
